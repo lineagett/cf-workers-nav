@@ -6,6 +6,8 @@ const HTML_CONTENT = `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Tab - 我的导航</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>⭐</text></svg>">
+    <link rel="preconnect" href="https://api.xinac.net">
+    <link rel="dns-prefetch" href="https://api.xinac.net">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,25 +21,25 @@ const HTML_CONTENT = `
                         }
                     },
                     animation: {
-                        'blob': 'blob 10s infinite',
+                        'blob': 'blob 15s infinite',
                     },
                     keyframes: {
                         blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(20px, -30px) scale(1.05)' },
+                            '66%': { transform: 'translate(-15px, 15px) scale(0.95)' },
                         }
                     },
-                    boxShadow: {
-                        'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
-                        'glass-hover': '0 10px 40px rgba(0, 0, 0, 0.2)',
-                    }
                 }
             }
         }
     </script>
     <style>
+        .animate-blob {
+            will-change: transform;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+        }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(156, 163, 175, 0.3); border-radius: 4px; }
@@ -48,6 +50,15 @@ const HTML_CONTENT = `
             * { scrollbar-width: none; /* Firefox */ }
         }
         
+        .animate-blob {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        .card {
+            will-change: transform, opacity;
+        }
+
         .card.dragging {
             opacity: 0.8;
             transform: scale(1.05);
@@ -455,10 +466,14 @@ const HTML_CONTENT = `
 
     let editCardMode = false;
     let isEditCategoryMode = false;
-    
+
     const categories = {};
     let currentEngine;
     let initialDragState = { category: null, index: -1 };
+    let scrollObserver = null;
+    let animationFrameId = null;
+
+    const iconCache = new Map();
 
     function toggleAppLayout() {
         isAppLayout = !isAppLayout;
@@ -661,9 +676,18 @@ const HTML_CONTENT = `
             elements.searchInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') elements.searchButton.click();
             });
+            
+            const handleInput = debounce((e) => {
+                const hasValue = e.target.value.length > 0;
+                elements.clearSearchButton.classList.toggle('hidden', !hasValue);
+                // 自动触发搜索，提升体验，或者仅控制清除按钮显示
+                // 这里保持原有逻辑，只控制按钮，但如果需要自动搜索可以在这里调用
+            }, 100);
+
+            // 分离清除按钮显隐（快速响应）和搜索逻辑（防抖）
             elements.searchInput.addEventListener('input', (e) => {
-                if(e.target.value) elements.clearSearchButton.classList.remove('hidden');
-                else elements.clearSearchButton.classList.add('hidden');
+                const hasValue = e.target.value.length > 0;
+                elements.clearSearchButton.classList.toggle('hidden', !hasValue);
             });
         }
         
@@ -673,7 +697,7 @@ const HTML_CONTENT = `
             } else {
                 elements.backToTopBtn.classList.add('hidden');
             }
-        });
+        }, { passive: true });
         
         setupScrollSpy();
         
@@ -879,7 +903,8 @@ const HTML_CONTENT = `
 
     function renderCategorySections({ renderButtons = false, searchMode = false, filteredCategories = null } = {}) {
         const container = document.getElementById('sections-container');
-        container.innerHTML = '';
+
+        const fragment = document.createDocumentFragment();
         const sourceCategories = searchMode && filteredCategories ? filteredCategories : categories;
 
         Object.entries(sourceCategories).forEach(([category, { links, isHidden }]) => {
@@ -989,12 +1014,16 @@ const HTML_CONTENT = `
                      document.getElementById('category-select-value').value = category;
                      document.getElementById('category-select-text').textContent = category;
                 };
-                cardContainer.appendChild(addCardPlaceholder);
+            cardContainer.appendChild(addCardPlaceholder);
             }
+            fragment.appendChild(section);
         });
 
+        container.innerHTML = '';
+        container.appendChild(fragment);
+
         if (renderButtons) renderCategoryButtons();
-        
+
         setupScrollSpy();
     }
 
@@ -1047,39 +1076,53 @@ const HTML_CONTENT = `
     }
 
     function setupScrollSpy() {
+        if (scrollObserver) {
+            scrollObserver.disconnect();
+        }
+
         const sections = document.querySelectorAll('.section');
         const buttons = document.querySelectorAll('.category-button');
-        
+
         if (!sections.length || !buttons.length) return;
 
         const observerOptions = {
             root: null,
-            rootMargin: '-100px 0px -70% 0px', 
+            rootMargin: '-80px 0px -80% 0px',
             threshold: 0
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        let lastHighlightedId = null;
+
+        scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    highlightButton(id);
+                if (entry.isIntersecting && entry.target.id !== lastHighlightedId) {
+                    lastHighlightedId = entry.target.id;
+                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                    animationFrameId = requestAnimationFrame(() => highlightButton(entry.target.id));
                 }
             });
         }, observerOptions);
 
-        sections.forEach(section => observer.observe(section));
+        sections.forEach(section => scrollObserver.observe(section));
     }
 
     function highlightButton(id) {
         const buttons = document.querySelectorAll('.category-button');
+        const activeClass = 'bg-emerald-500 text-white shadow-md dark:bg-emerald-600';
+        const inactiveClass = 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-slate-700';
+
         buttons.forEach(btn => {
             if (btn.dataset.target === id) {
-                btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'hover:bg-emerald-50', 'hover:text-emerald-600', 'dark:hover:bg-slate-700');
-                btn.classList.add('bg-emerald-500', 'text-white', 'shadow-md', 'dark:bg-emerald-600');
-                btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                if (!btn.classList.contains('bg-emerald-500')) {
+                    btn.classList.remove(...inactiveClass.split(' '));
+                    btn.classList.add(...activeClass.split(' '));
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
             } else {
-                btn.classList.remove('bg-emerald-500', 'text-white', 'shadow-md', 'dark:bg-emerald-600');
-                btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'hover:bg-emerald-50', 'hover:text-emerald-600', 'dark:hover:bg-slate-700');
+                if (btn.classList.contains('bg-emerald-500')) {
+                    btn.classList.remove(...activeClass.split(' '));
+                    btn.classList.add(...inactiveClass.split(' '));
+                }
             }
         });
     }
@@ -1152,7 +1195,7 @@ const HTML_CONTENT = `
         renderCategorySections({ renderButtons: true });
     }
 
-    const imgApi = '/api/icon?url='; 
+    const imgApi = '/api/icon?url=';
 
     function createCard(link, container) {
         if (!isEditMode && link.isPrivate && !isLoggedIn) return;
@@ -1184,26 +1227,43 @@ const HTML_CONTENT = `
             : 'flex items-center gap-3 mb-2.5 w-full';
         
         const icon = document.createElement('img');
-        icon.setAttribute('loading', 'lazy'); 
-        
-        // 图标样式
+        icon.setAttribute('loading', 'lazy');
+        icon.setAttribute('decoding', 'async');
+
+        const iconSrc = (!link.icon || !link.icon.startsWith('http')) ? imgApi + link.url : link.icon;
+        const cacheKey = iconSrc;
+        const fallbackSrc = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E";
+
+        if (iconCache.has(cacheKey)) {
+            icon.src = iconCache.get(cacheKey);
+        } else {
+            icon.src = iconSrc;
+            icon.onload = function() {
+                if (!iconCache.has(cacheKey)) {
+                    iconCache.set(cacheKey, icon.src);
+                }
+            };
+        }
+
+        icon.onerror = function() {
+            if (this.src !== fallbackSrc) {
+                this.src = fallbackSrc;
+                if (!iconCache.has(cacheKey + '_fallback')) {
+                    iconCache.set(cacheKey + '_fallback', fallbackSrc);
+                }
+            }
+        };
+
         let iconClass = '';
         if (isAppLayout) {
-             // APP 风格：大图标、白底、大圆角、阴影
              iconClass = 'w-14 h-14 sm:w-16 sm:h-16 rounded-[1.2rem] object-contain bg-white dark:bg-slate-600 p-2 shadow-md hover:shadow-lg transition-transform duration-300 group-hover:scale-105 group-active:scale-95 z-10';
              if (link.isPrivate) {
                  iconClass += ' ring-2 ring-amber-400';
              }
         } else {
-             // 列表风格：小图标、淡底
              iconClass = 'w-9 h-9 rounded-lg object-contain bg-slate-100 dark:bg-slate-900 p-1 border border-slate-200 dark:border-slate-700 transition-transform group-hover:scale-105 pointer-events-none';
         }
         icon.className = iconClass;
-
-        icon.src = (!link.icon || !link.icon.startsWith('http')) ? imgApi + link.url : link.icon;
-        icon.onerror = function() {
-             this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y='8' x2='12' y='12'/%3E%3Cline x1='12' y='16' x2='12.01' y='16'/%3E%3C/svg%3E";
-        };
         
         const title = document.createElement('div');
         const titleAlign = isAppLayout 
@@ -1285,17 +1345,21 @@ const HTML_CONTENT = `
         }
 
         if (!isEditMode) {
-            card.onclick = () => {
-                 let url = link.url.startsWith('http') ? link.url : 'http://' + link.url;
-                 window.open(url, '_blank');
-            };
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('button') && !e.target.closest('.card-menu-dropdown')) {
+                    let url = link.url.startsWith('http') ? link.url : 'http://' + link.url;
+                    window.open(url, '_blank');
+                }
+            });
         }
 
-        card.addEventListener('dragstart', dragStart);
-        card.addEventListener('dragover', dragOver);
-        card.addEventListener('dragend', dragEnd);
-        card.addEventListener('drop', drop);
-        
+        if (isEditMode) {
+            card.addEventListener('dragstart', dragStart, { passive: true });
+            card.addEventListener('dragover', dragOver, { passive: false });
+            card.addEventListener('dragend', dragEnd);
+            card.addEventListener('drop', drop);
+        }
+
         if (!isEditMode && link.tips) {
             card.classList.add('has-tooltip');
             card.setAttribute('data-tooltip', link.tips);
@@ -1304,16 +1368,13 @@ const HTML_CONTENT = `
         card.addEventListener('touchstart', touchStart, { passive: false });
         
         container.appendChild(card);
-        
-        if (!window.hasAddedCardMenuListener) {
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.card-menu-dropdown') && !e.target.closest('button')) {
-                    document.querySelectorAll('.card-menu-dropdown').forEach(el => el.classList.add('hidden'));
-                }
-            });
-            window.hasAddedCardMenuListener = true;
-        }
     }
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.card-menu-dropdown') && !e.target.closest('button')) {
+            document.querySelectorAll('.card-menu-dropdown').forEach(el => el.classList.add('hidden'));
+        }
+    });
     
     function updateCategorySelect() {
         const menu = document.getElementById('category-select-menu');
@@ -1568,18 +1629,21 @@ const HTML_CONTENT = `
                     clearTimeout(mobileDragTimer);
                     mobileDragTimer = null;
                 }
-                
+
                 return;
             }
 
             if (isMobileDragging) {
-                moveEvent.preventDefault(); 
-                
+                // 不使用 preventDefault 以允许页面滚动，除非确实在拖动卡片
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                     moveEvent.preventDefault();
+                }
+
                 lastTouchX = moveTouch.clientX;
                 lastTouchY = moveTouch.clientY;
 
                 const now = Date.now();
-                if (now - lastSwapTime > 30) { 
+                if (now - lastSwapTime > 50) {
                     detectSort(moveTouch.clientX, moveTouch.clientY);
                 }
             }
@@ -1690,10 +1754,12 @@ const HTML_CONTENT = `
                 clearTimeout(mobileDragTimer);
                 mobileDragTimer = null;
             }
-            if (rafId) cancelAnimationFrame(rafId);
-            
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
             if (isMobileDragging) {
-                // 离场动画
                 if (mobileClone && mobilePlaceholder) {
                     const rect = mobilePlaceholder.getBoundingClientRect();
                     mobileClone.style.transition = 'all 0.2s ease-out';
@@ -1702,26 +1768,32 @@ const HTML_CONTENT = `
                     mobileClone.style.opacity = '0';
 
                     setTimeout(() => {
-                        if (mobileClone) mobileClone.remove();
+                        if (mobileClone) {
+                            mobileClone.remove();
+                            mobileClone = null;
+                        }
                         if (mobilePlaceholder) {
                              mobilePlaceholder.style.opacity = '';
                              mobilePlaceholder.classList.remove('border-dashed', 'border-2', 'border-emerald-400');
+                             mobilePlaceholder = null;
                         }
-                        
-                        // 保存排序
-                        saveCardOrder();
 
-                        mobilePlaceholder = null;
-                        mobileClone = null;
+                        saveCardOrder();
                     }, 200);
                 } else {
-                    if (mobileClone) mobileClone.remove();
-                    if (mobilePlaceholder) mobilePlaceholder.style.opacity = '';
+                    if (mobileClone) {
+                        mobileClone.remove();
+                        mobileClone = null;
+                    }
+                    if (mobilePlaceholder) {
+                        mobilePlaceholder.style.opacity = '';
+                        mobilePlaceholder = null;
+                    }
                 }
 
                 document.body.style.overflow = '';
             }
-            
+
             isMobileDragging = false;
             cleanupListeners();
         }
@@ -1790,6 +1862,37 @@ const HTML_CONTENT = `
 
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function cleanupResources() {
+        if (scrollObserver) {
+            scrollObserver.disconnect();
+            scrollObserver = null;
+        }
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+        if (mobileDragTimer) {
+            clearTimeout(mobileDragTimer);
+            mobileDragTimer = null;
+        }
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+    }
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     }
     
     // 认证和模式
@@ -1981,27 +2084,58 @@ const HTML_CONTENT = `
     function setupTooltipDelegation() {
         const tooltip = document.getElementById('custom-tooltip');
         let activeTarget = null;
+        let tooltipVisible = false;
+        let lastUpdateTime = 0;
 
-        document.body.addEventListener('mousemove', (e) => {
+        const updateTooltip = (e) => {
+            const now = Date.now();
+            if (now - lastUpdateTime < 16) return;
+            lastUpdateTime = now;
+
             const target = e.target.closest('.has-tooltip');
 
             if (target) {
                 const text = target.getAttribute('data-tooltip');
                 if (text) {
-                    activeTarget = target;
-                    showTooltip(e, text);
+                    if (activeTarget !== target) {
+                        activeTarget = target;
+                        tooltip.textContent = text;
+                        tooltip.classList.remove('hidden');
+                        tooltipVisible = true;
+                    }
+                    const offset = 12;
+                    let left = e.clientX + offset;
+                    let top = e.clientY + offset;
+
+                    const tooltipRect = tooltip.getBoundingClientRect();
+
+                    if (left + tooltipRect.width > window.innerWidth) {
+                        left = e.clientX - tooltipRect.width - offset;
+                    }
+                    if (top + tooltipRect.height > window.innerHeight) {
+                        top = e.clientY - tooltipRect.height - offset;
+                    }
+
+                    tooltip.style.left = left + 'px';
+                    tooltip.style.top = top + 'px';
                 } else {
-                    hideTooltip();
+                    hideTooltipInternal();
                 }
             } else {
-                if (activeTarget) {
-                    hideTooltip();
-                    activeTarget = null;
-                }
+                hideTooltipInternal();
             }
-        });
+        };
 
-        window.addEventListener('scroll', hideTooltip, { passive: true });
+        const hideTooltipInternal = () => {
+            if (tooltipVisible) {
+                tooltip.classList.add('hidden');
+                activeTarget = null;
+                tooltipVisible = false;
+            }
+        };
+
+        document.body.addEventListener('mousemove', updateTooltip, { passive: true });
+        window.addEventListener('scroll', hideTooltipInternal, { passive: true });
     }
 
     function showTooltip(e, text) {
