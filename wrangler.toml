@@ -1,0 +1,74 @@
+# Cloudflare Workers 配置文件
+# 导航页应用 - Card Tab
+
+name = "nav-app"
+main = "works.js"
+compatibility_date = "2024-01-01"
+
+# 账户 ID (可选，如果有多个账户需要指定)
+# account_id = "your_account_id"
+
+# KV 命名空间绑定
+# 部署前需要先创建 KV 命名空间:
+# wrangler kv:namespace create "CARD_ORDER"
+# 然后将返回的 id 填入下方
+kv_namespaces = [
+  { binding = "CARD_ORDER", id = "YOUR_KV_NAMESPACE_ID" }
+]
+
+# 环境变量配置
+[vars]
+# 管理员密码 - 建议使用强密码
+ADMIN_PASSWORD = "your_secure_password_here"
+
+# JWT 签名密钥 - 建议至少 32 字符的随机字符串
+# 可使用: openssl rand -base64 32 生成
+JWT_SECRET = "your_jwt_secret_at_least_32_chars"
+
+# 允许的 CORS 来源 (可选，默认为 * 允许所有)
+# 生产环境建议设置为你的域名，如: https://nav.example.com
+# ALLOWED_ORIGIN = "*"
+
+# 备份保留数量 (可选，默认 10)
+# MAX_BACKUPS = "10"
+
+# 是否启用外部图标 API (可选，默认 false 使用自建抓取)
+# USE_EXTERNAL_ICON_API = "false"
+
+# ============================================
+# 生产环境配置 (可选)
+# ============================================
+# [env.production]
+# vars = { ADMIN_PASSWORD = "production_password", JWT_SECRET = "production_secret" }
+
+# ============================================
+# 自定义域名配置 (可选)
+# ============================================
+# routes = [
+#   { pattern = "nav.example.com", custom_domain = true }
+# ]
+
+# ============================================
+# 部署步骤:
+# ============================================
+# 1. 安装 Wrangler CLI:
+#    npm install -g wrangler
+#
+# 2. 登录 Cloudflare:
+#    wrangler login
+#
+# 3. 创建 KV 命名空间:
+#    wrangler kv:namespace create "CARD_ORDER"
+#    # 复制返回的 id 到上方 kv_namespaces
+#
+# 4. 修改上方配置:
+#    - 填入 KV namespace id
+#    - 设置 ADMIN_PASSWORD
+#    - 设置 JWT_SECRET
+#
+# 5. 部署:
+#    wrangler deploy
+#
+# 6. (可选) 绑定自定义域名:
+#    在 Cloudflare Dashboard > Workers > 你的 Worker > Settings > Domains & Routes
+# ============================================
