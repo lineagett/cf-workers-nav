@@ -1268,14 +1268,13 @@ const HTML_CONTENT = `
             cardBaseClass += ' ring-1 ring-amber-400/40 bg-amber-50/80 dark:bg-amber-900/10 !border-amber-200 dark:!border-amber-700/50';
         }
 
-        card.className = \`group relative h-full w-full rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] cursor-pointer select-none \${cardBaseClass}\`;
-        
+        card.className = \`group relative h-full w-full rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] cursor-pointer select-none card \${cardBaseClass}\`;
+
         if (isEditMode) {
             card.setAttribute('draggable', 'true');
-            card.classList.add('card'); 
             card.classList.add('cursor-move');
         }
-        
+
         card.dataset.isPrivate = link.isPrivate;
         card.setAttribute('data-url', link.url);
 
