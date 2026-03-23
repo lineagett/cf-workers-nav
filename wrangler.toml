@@ -4,6 +4,7 @@
 name = "nav-app"
 main = "works.js"
 compatibility_date = "2024-01-01"
+keep_vars = true
 
 # 账户 ID (可选，如果有多个账户需要指定)
 # account_id = "your_account_id"
@@ -17,13 +18,13 @@ kv_namespaces = [
 ]
 
 # 环境变量配置
-[vars]
+#[vars]
 # 管理员密码 - 建议使用强密码
-ADMIN_PASSWORD = "your_secure_password_here"
+#ADMIN_PASSWORD = "your_secure_password_here"
 
 # JWT 签名密钥 - 建议至少 32 字符的随机字符串
 # 可使用: openssl rand -base64 32 生成
-JWT_SECRET = "your_jwt_secret_at_least_32_chars"
+#JWT_SECRET = "your_jwt_secret_at_least_32_chars"
 
 # 允许的 CORS 来源 (可选，默认为 * 允许所有)
 # 生产环境建议设置为你的域名，如: https://nav.example.com
