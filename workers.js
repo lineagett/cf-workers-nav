@@ -6,6 +6,8 @@ const HTML_CONTENT = `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Tab - 我的导航</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>⭐</text></svg>">
+    <link rel="preconnect" href="https://api.xinac.net">
+    <link rel="dns-prefetch" href="https://api.xinac.net">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,25 +21,25 @@ const HTML_CONTENT = `
                         }
                     },
                     animation: {
-                        'blob': 'blob 10s infinite',
+                        'blob': 'blob 15s infinite',
                     },
                     keyframes: {
                         blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(20px, -30px) scale(1.05)' },
+                            '66%': { transform: 'translate(-15px, 15px) scale(0.95)' },
                         }
                     },
-                    boxShadow: {
-                        'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
-                        'glass-hover': '0 10px 40px rgba(0, 0, 0, 0.2)',
-                    }
                 }
             }
         }
     </script>
     <style>
+        .animate-blob {
+            will-change: transform;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+        }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(156, 163, 175, 0.3); border-radius: 4px; }
@@ -48,6 +50,15 @@ const HTML_CONTENT = `
             * { scrollbar-width: none; /* Firefox */ }
         }
         
+        .animate-blob {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        .card {
+            will-change: transform, opacity;
+        }
+
         .card.dragging {
             opacity: 0.8;
             transform: scale(1.05);
@@ -449,16 +460,54 @@ const HTML_CONTENT = `
     </div>
 
     <script>
+    // ============================================
+    // 全局状态
+    // ============================================
     let isEditMode = false;
     let isLoggedIn = false;
     let isAppLayout = localStorage.getItem('appLayout') === 'true';
 
     let editCardMode = false;
     let isEditCategoryMode = false;
-    
+
     const categories = {};
     let currentEngine;
     let initialDragState = { category: null, index: -1 };
+    let scrollObserver = null;
+    let animationFrameId = null;
+
+    const iconCache = new Map();
+    
+    // DOM 元素缓存 (延迟初始化)
+    let domCache = null;
+    
+    function getDom() {
+        if (!domCache) {
+            domCache = {
+                themeSwitchCheckbox: document.getElementById('theme-switch-checkbox'),
+                layoutSwitchCheckbox: document.getElementById('layout-switch-checkbox'),
+                savePrefCheckbox: document.getElementById('save-preference-checkbox'),
+                searchButton: document.getElementById('search-button'),
+                searchInput: document.getElementById('search-input'),
+                clearSearchButton: document.getElementById('clear-search-button'),
+                menuToggleBtn: document.getElementById('profile-menu-toggle'),
+                dropdown: document.getElementById('profile-dropdown'),
+                dropdownWrapper: document.getElementById('profile-dropdown-wrapper'),
+                backToTopBtn: document.getElementById('back-to-top-btn'),
+                searchEngineWrapper: document.getElementById('search-engine-wrapper'),
+                searchEngineBtn: document.getElementById('search-engine-btn'),
+                searchEngineMenu: document.getElementById('search-engine-menu'),
+                categorySelectWrapper: document.getElementById('category-select-wrapper'),
+                categorySelectBtn: document.getElementById('category-select-btn'),
+                categorySelectMenu: document.getElementById('category-select-menu'),
+                sectionsContainer: document.getElementById('sections-container'),
+                categoryButtonsContainer: document.getElementById('category-buttons-container'),
+                currentEngineLabel: document.getElementById('current-engine-label'),
+                currentEngineIcon: document.getElementById('current-engine-icon'),
+            };
+        }
+        return domCache;
+    }
 
     function toggleAppLayout() {
         isAppLayout = !isAppLayout;
@@ -525,15 +574,70 @@ const HTML_CONTENT = `
         selectSearchEngine(engine, searchEngineLabels[engine]);
     }
 
+    // ============================================
+    // DOM 元素缓存 (全局)
+    // ============================================
+    const DOM = {};
+    
+    function cacheDOM() {
+        DOM.themeSwitchCheckbox = document.getElementById('theme-switch-checkbox');
+        DOM.layoutSwitchCheckbox = document.getElementById('layout-switch-checkbox');
+        DOM.savePrefCheckbox = document.getElementById('save-preference-checkbox');
+        DOM.searchButton = document.getElementById('search-button');
+        DOM.searchInput = document.getElementById('search-input');
+        DOM.clearSearchButton = document.getElementById('clear-search-button');
+        DOM.menuToggleBtn = document.getElementById('profile-menu-toggle');
+        DOM.dropdown = document.getElementById('profile-dropdown');
+        DOM.dropdownWrapper = document.getElementById('profile-dropdown-wrapper');
+        DOM.backToTopBtn = document.getElementById('back-to-top-btn');
+        DOM.searchWrapper = document.getElementById('search-engine-wrapper');
+        DOM.searchEngineBtn = document.getElementById('search-engine-btn');
+        DOM.searchEngineMenu = document.getElementById('search-engine-menu');
+        DOM.catWrapper = document.getElementById('category-select-wrapper');
+        DOM.catBtn = document.getElementById('category-select-btn');
+        DOM.catMenu = document.getElementById('category-select-menu');
+        DOM.sectionsContainer = document.getElementById('sections-container');
+        DOM.categoryButtonsContainer = document.getElementById('category-buttons-container');
+        DOM.currentEngineLabel = document.getElementById('current-engine-label');
+        DOM.currentEngineIcon = document.getElementById('current-engine-icon');
+        DOM.tooltip = document.getElementById('custom-tooltip');
+    }
+    
+    function setupGlobalDelegation() {
+        // 1. 卡片点击 (打开链接)
+        DOM.sectionsContainer.addEventListener('click', (e) => {
+            if (isEditMode) return;
+            const card = e.target.closest('.card');
+            // 确保不是点击了卡片内的按钮（如编辑模式的菜单）
+            if (card && !e.target.closest('button') && !e.target.closest('.card-menu-dropdown')) {
+                const urlAttr = card.getAttribute('data-url');
+                if (urlAttr) {
+                    let url = urlAttr.startsWith('http') ? urlAttr : 'http://' + urlAttr;
+                    window.open(url, '_blank');
+                }
+            }
+        });
+
+        // 2. 移动端拖拽 (TouchStart)
+        DOM.sectionsContainer.addEventListener('touchstart', (e) => {
+             // 只有在 card 上触发时才处理
+             if(isEditMode && e.target.closest('.card')) {
+                 touchStart(e);
+             }
+        }, { passive: false });
+    }
+
     function updateSearchEngineUI(value) {
         const label = searchEngineLabels[value] || "本站";
         const icon = searchEngineIcons[value] || searchEngineIcons['site'];
         
-        document.getElementById('current-engine-label').textContent = label;
-        document.getElementById('current-engine-icon').innerHTML = icon;
+        if (DOM.currentEngineLabel) DOM.currentEngineLabel.textContent = label;
+        if (DOM.currentEngineIcon) DOM.currentEngineIcon.innerHTML = icon;
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
+        cacheDOM();
+        setupGlobalDelegation();
         initializeUIComponents();
         renderSearchEngineMenu();
         await checkLoginStatusAndLoad();
@@ -551,84 +655,62 @@ const HTML_CONTENT = `
     }
 
     function initializeUIComponents() {
-        const elements = {
-            themeSwitchCheckbox: document.getElementById('theme-switch-checkbox'),
-            layoutSwitchCheckbox: document.getElementById('layout-switch-checkbox'),
-            savePrefCheckbox: document.getElementById('save-preference-checkbox'),
-            searchButton: document.getElementById('search-button'),
-            searchInput: document.getElementById('search-input'),
-            clearSearchButton: document.getElementById('clear-search-button'),
-            menuToggleBtn: document.getElementById('profile-menu-toggle'),
-            dropdown: document.getElementById('profile-dropdown'),
-            dropdownWrapper: document.getElementById('profile-dropdown-wrapper'),
-            backToTopBtn: document.getElementById('back-to-top-btn')
-        };
-        
-        elements.themeSwitchCheckbox.checked = document.documentElement.classList.contains('dark');
-        elements.themeSwitchCheckbox.addEventListener('change', (e) => {
+        DOM.themeSwitchCheckbox.checked = document.documentElement.classList.contains('dark');
+        DOM.themeSwitchCheckbox.addEventListener('change', (e) => {
             const isDark = e.target.checked;
             window.isDarkTheme = isDark;
             applyTheme(isDark);
             
-            const savePrefCheckbox = document.getElementById('save-preference-checkbox');
-            if (savePrefCheckbox && savePrefCheckbox.checked) {
+            if (DOM.savePrefCheckbox && DOM.savePrefCheckbox.checked) {
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
             }
         });
 
-        if(elements.layoutSwitchCheckbox) {
-            elements.layoutSwitchCheckbox.checked = isAppLayout;
+        if(DOM.layoutSwitchCheckbox) {
+            DOM.layoutSwitchCheckbox.checked = isAppLayout;
         }
         
         const savedPref = localStorage.getItem('savePreferences') === 'true';
-        elements.savePrefCheckbox.checked = savedPref;
+        DOM.savePrefCheckbox.checked = savedPref;
 
         currentEngine = (savedPref && localStorage.getItem('searchEngine')) || 'site';
         updateSearchEngineUI(currentEngine);
-
-        const searchWrapper = document.getElementById('search-engine-wrapper');
-        const searchBtn = document.getElementById('search-engine-btn');
-        const searchMenu = document.getElementById('search-engine-menu');
         
-        searchBtn.addEventListener('click', (e) => {
+        DOM.searchEngineBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            searchMenu.classList.toggle('hidden');
+            DOM.searchEngineMenu.classList.toggle('hidden');
         });
-
-        const catWrapper = document.getElementById('category-select-wrapper');
-        const catBtn = document.getElementById('category-select-btn');
-        const catMenu = document.getElementById('category-select-menu');
         
-        catBtn.addEventListener('click', (e) => {
+        DOM.catBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            catMenu.classList.toggle('hidden');
+            DOM.catMenu.classList.toggle('hidden');
         });
 
         const toggleDropdown = () => {
-            elements.dropdown.classList.toggle('hidden');
+            DOM.dropdown.classList.toggle('hidden');
         };
 
-        elements.menuToggleBtn.addEventListener('click', (e) => {
+        DOM.menuToggleBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleDropdown();
         });
 
         document.addEventListener('click', (e) => {
-            if (!elements.dropdownWrapper.contains(e.target)) {
-                 elements.dropdown.classList.add('hidden');
+            if (!DOM.dropdownWrapper.contains(e.target)) {
+                 DOM.dropdown.classList.add('hidden');
             }
-            if (!searchWrapper.contains(e.target)) {
-                searchMenu.classList.add('hidden');
+            if (!DOM.searchWrapper.contains(e.target)) {
+                DOM.searchEngineMenu.classList.add('hidden');
             }
-            if (!catWrapper.contains(e.target)) {
-                catMenu.classList.add('hidden');
+            if (!DOM.catWrapper.contains(e.target)) {
+                DOM.catMenu.classList.add('hidden');
             }
         });
 
-        elements.dropdown.addEventListener('click', (e) => { e.stopPropagation(); });
+        DOM.dropdown.addEventListener('click', (e) => { e.stopPropagation(); });
 
-        elements.savePrefCheckbox.addEventListener('change', () => {
-            const enabled = elements.savePrefCheckbox.checked;
+        DOM.savePrefCheckbox.addEventListener('change', () => {
+            const enabled = DOM.savePrefCheckbox.checked;
             localStorage.setItem('savePreferences', enabled);
             if (!enabled) {
                 localStorage.removeItem('searchEngine');
@@ -639,8 +721,8 @@ const HTML_CONTENT = `
             }
         });
 
-        elements.searchButton.addEventListener('click', async () => {
-            const query = elements.searchInput.value.trim();
+        DOM.searchButton.addEventListener('click', async () => {
+            const query = DOM.searchInput.value.trim();
             if (query) {
                 if (currentEngine === 'site') {
                     await searchLinks(query); 
@@ -650,30 +732,32 @@ const HTML_CONTENT = `
             }
         });
 
-        if (elements.clearSearchButton) {
-            elements.clearSearchButton.addEventListener('click', () => {
-                elements.searchInput.value = '';
+        if (DOM.clearSearchButton) {
+            DOM.clearSearchButton.addEventListener('click', () => {
+                DOM.searchInput.value = '';
                 loadSections(); 
             });
         }
 
-        if (elements.searchInput) {
-            elements.searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') elements.searchButton.click();
+        if (DOM.searchInput) {
+            DOM.searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') DOM.searchButton.click();
             });
-            elements.searchInput.addEventListener('input', (e) => {
-                if(e.target.value) elements.clearSearchButton.classList.remove('hidden');
-                else elements.clearSearchButton.classList.add('hidden');
+            
+            // 分离清除按钮显隐（快速响应）和搜索逻辑（防抖）
+            DOM.searchInput.addEventListener('input', (e) => {
+                const hasValue = e.target.value.length > 0;
+                DOM.clearSearchButton.classList.toggle('hidden', !hasValue);
             });
         }
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
-                elements.backToTopBtn.classList.remove('hidden');
+                DOM.backToTopBtn.classList.remove('hidden');
             } else {
-                elements.backToTopBtn.classList.add('hidden');
+                DOM.backToTopBtn.classList.add('hidden');
             }
-        });
+        }, { passive: true });
         
         setupScrollSpy();
         
@@ -684,11 +768,10 @@ const HTML_CONTENT = `
         currentEngine = value;
         updateSearchEngineUI(value);
         
-        const savePrefCheckbox = document.getElementById('save-preference-checkbox');
-        if (savePrefCheckbox && savePrefCheckbox.checked) {
+        if (DOM.savePrefCheckbox && DOM.savePrefCheckbox.checked) {
             localStorage.setItem('searchEngine', value);
         }
-        document.getElementById('search-engine-menu').classList.add('hidden');
+        DOM.searchEngineMenu.classList.add('hidden');
     }
 
 
@@ -879,7 +962,8 @@ const HTML_CONTENT = `
 
     function renderCategorySections({ renderButtons = false, searchMode = false, filteredCategories = null } = {}) {
         const container = document.getElementById('sections-container');
-        container.innerHTML = '';
+
+        const fragment = document.createDocumentFragment();
         const sourceCategories = searchMode && filteredCategories ? filteredCategories : categories;
 
         Object.entries(sourceCategories).forEach(([category, { links, isHidden }]) => {
@@ -989,12 +1073,16 @@ const HTML_CONTENT = `
                      document.getElementById('category-select-value').value = category;
                      document.getElementById('category-select-text').textContent = category;
                 };
-                cardContainer.appendChild(addCardPlaceholder);
+            cardContainer.appendChild(addCardPlaceholder);
             }
+            fragment.appendChild(section);
         });
 
+        container.innerHTML = '';
+        container.appendChild(fragment);
+
         if (renderButtons) renderCategoryButtons();
-        
+
         setupScrollSpy();
     }
 
@@ -1003,7 +1091,6 @@ const HTML_CONTENT = `
     } 
 
     async function searchLinks(query) {
-        const clearBtn = document.getElementById('clear-search-button');
         const filteredData = getFilteredCategoriesByKeyword(query);
         const hasMatchingLinks = Object.values(filteredData).some(c => c.links.length > 0);
 
@@ -1011,12 +1098,12 @@ const HTML_CONTENT = `
             await customAlert('没有找到相关站点。');
             return;
         }
-        clearBtn.classList.remove('hidden');
+        if (DOM.clearSearchButton) DOM.clearSearchButton.classList.remove('hidden');
         renderCategorySections({ renderButtons: true, searchMode: true, filteredCategories: filteredData });
     }
     
     function renderCategoryButtons() {
-        const container = document.getElementById('category-buttons-container');
+        const container = DOM.categoryButtonsContainer || document.getElementById('category-buttons-container');
         container.innerHTML = '';
         const visibleCategories = Object.keys(categories).filter(c => 
             (categories[c].links || []).some(l => !l.isPrivate || isLoggedIn) && 
@@ -1047,39 +1134,53 @@ const HTML_CONTENT = `
     }
 
     function setupScrollSpy() {
+        if (scrollObserver) {
+            scrollObserver.disconnect();
+        }
+
         const sections = document.querySelectorAll('.section');
         const buttons = document.querySelectorAll('.category-button');
-        
+
         if (!sections.length || !buttons.length) return;
 
         const observerOptions = {
             root: null,
-            rootMargin: '-100px 0px -70% 0px', 
+            rootMargin: '-80px 0px -80% 0px',
             threshold: 0
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        let lastHighlightedId = null;
+
+        scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    highlightButton(id);
+                if (entry.isIntersecting && entry.target.id !== lastHighlightedId) {
+                    lastHighlightedId = entry.target.id;
+                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                    animationFrameId = requestAnimationFrame(() => highlightButton(entry.target.id));
                 }
             });
         }, observerOptions);
 
-        sections.forEach(section => observer.observe(section));
+        sections.forEach(section => scrollObserver.observe(section));
     }
 
     function highlightButton(id) {
         const buttons = document.querySelectorAll('.category-button');
+        const activeClass = 'bg-emerald-500 text-white shadow-md dark:bg-emerald-600';
+        const inactiveClass = 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-slate-700';
+
         buttons.forEach(btn => {
             if (btn.dataset.target === id) {
-                btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'hover:bg-emerald-50', 'hover:text-emerald-600', 'dark:hover:bg-slate-700');
-                btn.classList.add('bg-emerald-500', 'text-white', 'shadow-md', 'dark:bg-emerald-600');
-                btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                if (!btn.classList.contains('bg-emerald-500')) {
+                    btn.classList.remove(...inactiveClass.split(' '));
+                    btn.classList.add(...activeClass.split(' '));
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
             } else {
-                btn.classList.remove('bg-emerald-500', 'text-white', 'shadow-md', 'dark:bg-emerald-600');
-                btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'hover:bg-emerald-50', 'hover:text-emerald-600', 'dark:hover:bg-slate-700');
+                if (btn.classList.contains('bg-emerald-500')) {
+                    btn.classList.remove(...activeClass.split(' '));
+                    btn.classList.add(...inactiveClass.split(' '));
+                }
             }
         });
     }
@@ -1147,12 +1248,12 @@ const HTML_CONTENT = `
     }
     
     function loadSections() {
-        document.getElementById('clear-search-button').classList.add('hidden');
-        document.getElementById('search-input').value = '';
+        if (DOM.clearSearchButton) DOM.clearSearchButton.classList.add('hidden');
+        if (DOM.searchInput) DOM.searchInput.value = '';
         renderCategorySections({ renderButtons: true });
     }
 
-    const imgApi = '/api/icon?url='; 
+    const imgApi = '/api/icon?url=';
 
     function createCard(link, container) {
         if (!isEditMode && link.isPrivate && !isLoggedIn) return;
@@ -1167,14 +1268,13 @@ const HTML_CONTENT = `
             cardBaseClass += ' ring-1 ring-amber-400/40 bg-amber-50/80 dark:bg-amber-900/10 !border-amber-200 dark:!border-amber-700/50';
         }
 
-        card.className = \`group relative h-full w-full rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] cursor-pointer select-none \${cardBaseClass}\`;
-        
+        card.className = \`group relative h-full w-full rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] cursor-pointer select-none card \${cardBaseClass}\`;
+
         if (isEditMode) {
             card.setAttribute('draggable', 'true');
-            card.classList.add('card'); 
             card.classList.add('cursor-move');
         }
-        
+
         card.dataset.isPrivate = link.isPrivate;
         card.setAttribute('data-url', link.url);
 
@@ -1184,26 +1284,43 @@ const HTML_CONTENT = `
             : 'flex items-center gap-3 mb-2.5 w-full';
         
         const icon = document.createElement('img');
-        icon.setAttribute('loading', 'lazy'); 
-        
-        // 图标样式
+        icon.setAttribute('loading', 'lazy');
+        icon.setAttribute('decoding', 'async');
+
+        const iconSrc = (!link.icon || !link.icon.startsWith('http')) ? imgApi + link.url : link.icon;
+        const cacheKey = iconSrc;
+        const fallbackSrc = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E";
+
+        if (iconCache.has(cacheKey)) {
+            icon.src = iconCache.get(cacheKey);
+        } else {
+            icon.src = iconSrc;
+            icon.onload = function() {
+                if (!iconCache.has(cacheKey)) {
+                    iconCache.set(cacheKey, icon.src);
+                }
+            };
+        }
+
+        icon.onerror = function() {
+            if (this.src !== fallbackSrc) {
+                this.src = fallbackSrc;
+                if (!iconCache.has(cacheKey + '_fallback')) {
+                    iconCache.set(cacheKey + '_fallback', fallbackSrc);
+                }
+            }
+        };
+
         let iconClass = '';
         if (isAppLayout) {
-             // APP 风格：大图标、白底、大圆角、阴影
              iconClass = 'w-14 h-14 sm:w-16 sm:h-16 rounded-[1.2rem] object-contain bg-white dark:bg-slate-600 p-2 shadow-md hover:shadow-lg transition-transform duration-300 group-hover:scale-105 group-active:scale-95 z-10';
              if (link.isPrivate) {
                  iconClass += ' ring-2 ring-amber-400';
              }
         } else {
-             // 列表风格：小图标、淡底
              iconClass = 'w-9 h-9 rounded-lg object-contain bg-slate-100 dark:bg-slate-900 p-1 border border-slate-200 dark:border-slate-700 transition-transform group-hover:scale-105 pointer-events-none';
         }
         icon.className = iconClass;
-
-        icon.src = (!link.icon || !link.icon.startsWith('http')) ? imgApi + link.url : link.icon;
-        icon.onerror = function() {
-             this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y='8' x2='12' y='12'/%3E%3Cline x1='12' y='16' x2='12.01' y='16'/%3E%3C/svg%3E";
-        };
         
         const title = document.createElement('div');
         const titleAlign = isAppLayout 
@@ -1284,36 +1401,26 @@ const HTML_CONTENT = `
             card.appendChild(actionWrapper);
         }
 
-        if (!isEditMode) {
-            card.onclick = () => {
-                 let url = link.url.startsWith('http') ? link.url : 'http://' + link.url;
-                 window.open(url, '_blank');
-            };
+        if (isEditMode) {
+            card.addEventListener('dragstart', dragStart, { passive: true });
+            card.addEventListener('dragover', dragOver, { passive: false });
+            card.addEventListener('dragend', dragEnd);
+            card.addEventListener('drop', drop);
         }
 
-        card.addEventListener('dragstart', dragStart);
-        card.addEventListener('dragover', dragOver);
-        card.addEventListener('dragend', dragEnd);
-        card.addEventListener('drop', drop);
-        
         if (!isEditMode && link.tips) {
             card.classList.add('has-tooltip');
             card.setAttribute('data-tooltip', link.tips);
         }
 
-        card.addEventListener('touchstart', touchStart, { passive: false });
-        
         container.appendChild(card);
-        
-        if (!window.hasAddedCardMenuListener) {
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.card-menu-dropdown') && !e.target.closest('button')) {
-                    document.querySelectorAll('.card-menu-dropdown').forEach(el => el.classList.add('hidden'));
-                }
-            });
-            window.hasAddedCardMenuListener = true;
-        }
     }
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.card-menu-dropdown') && !e.target.closest('button')) {
+            document.querySelectorAll('.card-menu-dropdown').forEach(el => el.classList.add('hidden'));
+        }
+    });
     
     function updateCategorySelect() {
         const menu = document.getElementById('category-select-menu');
@@ -1568,18 +1675,21 @@ const HTML_CONTENT = `
                     clearTimeout(mobileDragTimer);
                     mobileDragTimer = null;
                 }
-                
+
                 return;
             }
 
             if (isMobileDragging) {
-                moveEvent.preventDefault(); 
-                
+                // 不使用 preventDefault 以允许页面滚动，除非确实在拖动卡片
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                     moveEvent.preventDefault();
+                }
+
                 lastTouchX = moveTouch.clientX;
                 lastTouchY = moveTouch.clientY;
 
                 const now = Date.now();
-                if (now - lastSwapTime > 30) { 
+                if (now - lastSwapTime > 50) {
                     detectSort(moveTouch.clientX, moveTouch.clientY);
                 }
             }
@@ -1690,10 +1800,12 @@ const HTML_CONTENT = `
                 clearTimeout(mobileDragTimer);
                 mobileDragTimer = null;
             }
-            if (rafId) cancelAnimationFrame(rafId);
-            
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
             if (isMobileDragging) {
-                // 离场动画
                 if (mobileClone && mobilePlaceholder) {
                     const rect = mobilePlaceholder.getBoundingClientRect();
                     mobileClone.style.transition = 'all 0.2s ease-out';
@@ -1702,26 +1814,32 @@ const HTML_CONTENT = `
                     mobileClone.style.opacity = '0';
 
                     setTimeout(() => {
-                        if (mobileClone) mobileClone.remove();
+                        if (mobileClone) {
+                            mobileClone.remove();
+                            mobileClone = null;
+                        }
                         if (mobilePlaceholder) {
                              mobilePlaceholder.style.opacity = '';
                              mobilePlaceholder.classList.remove('border-dashed', 'border-2', 'border-emerald-400');
+                             mobilePlaceholder = null;
                         }
-                        
-                        // 保存排序
-                        saveCardOrder();
 
-                        mobilePlaceholder = null;
-                        mobileClone = null;
+                        saveCardOrder();
                     }, 200);
                 } else {
-                    if (mobileClone) mobileClone.remove();
-                    if (mobilePlaceholder) mobilePlaceholder.style.opacity = '';
+                    if (mobileClone) {
+                        mobileClone.remove();
+                        mobileClone = null;
+                    }
+                    if (mobilePlaceholder) {
+                        mobilePlaceholder.style.opacity = '';
+                        mobilePlaceholder = null;
+                    }
                 }
 
                 document.body.style.overflow = '';
             }
-            
+
             isMobileDragging = false;
             cleanupListeners();
         }
@@ -1790,6 +1908,37 @@ const HTML_CONTENT = `
 
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function cleanupResources() {
+        if (scrollObserver) {
+            scrollObserver.disconnect();
+            scrollObserver = null;
+        }
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+        if (mobileDragTimer) {
+            clearTimeout(mobileDragTimer);
+            mobileDragTimer = null;
+        }
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+    }
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     }
     
     // 认证和模式
@@ -1981,27 +2130,58 @@ const HTML_CONTENT = `
     function setupTooltipDelegation() {
         const tooltip = document.getElementById('custom-tooltip');
         let activeTarget = null;
+        let tooltipVisible = false;
+        let lastUpdateTime = 0;
 
-        document.body.addEventListener('mousemove', (e) => {
+        const updateTooltip = (e) => {
+            const now = Date.now();
+            if (now - lastUpdateTime < 16) return;
+            lastUpdateTime = now;
+
             const target = e.target.closest('.has-tooltip');
 
             if (target) {
                 const text = target.getAttribute('data-tooltip');
                 if (text) {
-                    activeTarget = target;
-                    showTooltip(e, text);
+                    if (activeTarget !== target) {
+                        activeTarget = target;
+                        tooltip.textContent = text;
+                        tooltip.classList.remove('hidden');
+                        tooltipVisible = true;
+                    }
+                    const offset = 12;
+                    let left = e.clientX + offset;
+                    let top = e.clientY + offset;
+
+                    const tooltipRect = tooltip.getBoundingClientRect();
+
+                    if (left + tooltipRect.width > window.innerWidth) {
+                        left = e.clientX - tooltipRect.width - offset;
+                    }
+                    if (top + tooltipRect.height > window.innerHeight) {
+                        top = e.clientY - tooltipRect.height - offset;
+                    }
+
+                    tooltip.style.left = left + 'px';
+                    tooltip.style.top = top + 'px';
                 } else {
-                    hideTooltip();
+                    hideTooltipInternal();
                 }
             } else {
-                if (activeTarget) {
-                    hideTooltip();
-                    activeTarget = null;
-                }
+                hideTooltipInternal();
             }
-        });
+        };
 
-        window.addEventListener('scroll', hideTooltip, { passive: true });
+        const hideTooltipInternal = () => {
+            if (tooltipVisible) {
+                tooltip.classList.add('hidden');
+                activeTarget = null;
+                tooltipVisible = false;
+            }
+        };
+
+        document.body.addEventListener('mousemove', updateTooltip, { passive: true });
+        window.addEventListener('scroll', hideTooltipInternal, { passive: true });
     }
 
     function showTooltip(e, text) {
@@ -2166,9 +2346,121 @@ const HTML_CONTENT = `
 </html>
 `;
 
+// ============================================
+// 配置常量
+// ============================================
 const DEFAULT_USER = 'testUser';
 const DEFAULT_IMGAPI = 'https://api.xinac.net/icon/?url=';
-let USE_DEFAULT_IMGAPI = true;
+
+// 默认配置 (可通过环境变量覆盖)
+const DEFAULT_CONFIG = {
+    MAX_BACKUPS: 10,
+    MIN_BACKUP_INTERVAL_MS: 10 * 60 * 1000, // 10分钟
+    ACCESS_TOKEN_EXPIRY: 7200,              // 2小时
+    REFRESH_TOKEN_EXPIRY: 2592000,          // 30天
+    ICON_CACHE_MAX_AGE: 604800,             // 7天
+    HTML_CACHE_MAX_AGE: 3600,               // 1小时
+};
+
+// ============================================
+// 辅助函数
+// ============================================
+
+/**
+ * 获取配置值，优先使用环境变量
+ */
+function getConfig(env, key) {
+    if (env[key] !== undefined) {
+        const val = env[key];
+        // 尝试解析数字
+        const num = parseInt(val, 10);
+        return isNaN(num) ? val : num;
+    }
+    return DEFAULT_CONFIG[key];
+}
+
+/**
+ * 生成动态 CORS headers
+ */
+function getCorsHeaders(env, request) {
+    const origin = request?.headers?.get('Origin') || '*';
+    const allowedOrigin = env.ALLOWED_ORIGIN || '*';
+    
+    // 如果配置了特定域名，验证请求来源
+    let responseOrigin = '*';
+    if (allowedOrigin !== '*') {
+        const allowedOrigins = allowedOrigin.split(',').map(o => o.trim());
+        if (allowedOrigins.includes(origin)) {
+            responseOrigin = origin;
+        } else {
+            responseOrigin = allowedOrigins[0]; // 默认使用第一个允许的域名
+        }
+    }
+    
+    return {
+        'Access-Control-Allow-Origin': responseOrigin,
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, Cookie',
+        'Access-Control-Allow-Credentials': 'true'
+    };
+}
+
+/**
+ * 时序安全的字符串比较 (防止时序攻击)
+ */
+async function timingSafeEqual(a, b) {
+    const encoder = new TextEncoder();
+    const aBytes = encoder.encode(a);
+    const bBytes = encoder.encode(b);
+    
+    if (aBytes.length !== bBytes.length) {
+        // 为防止长度泄露，仍然进行完整比较
+        const dummyBytes = encoder.encode(a);
+        await crypto.subtle.digest('SHA-256', dummyBytes);
+        return false;
+    }
+    
+    // 使用 HMAC 进行恒定时间比较
+    const key = await crypto.subtle.generateKey(
+        { name: 'HMAC', hash: 'SHA-256' },
+        false,
+        ['sign']
+    );
+    
+    const sigA = await crypto.subtle.sign('HMAC', key, aBytes);
+    const sigB = await crypto.subtle.sign('HMAC', key, bBytes);
+    
+    const arrA = new Uint8Array(sigA);
+    const arrB = new Uint8Array(sigB);
+    
+    let result = 0;
+    for (let i = 0; i < arrA.length; i++) {
+        result |= arrA[i] ^ arrB[i];
+    }
+    return result === 0;
+}
+
+/**
+ * 结构化日志记录
+ */
+function logError(context, error, extra = {}) {
+    console.error(JSON.stringify({
+        timestamp: new Date().toISOString(),
+        context,
+        error: error?.message || String(error),
+        stack: error?.stack,
+        ...extra
+    }));
+}
+
+function logInfo(context, message, extra = {}) {
+    console.log(JSON.stringify({
+        timestamp: new Date().toISOString(),
+        context,
+        message,
+        ...extra
+    }));
+}
 
 function base64UrlEncode(str) {
     return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
@@ -2269,12 +2561,7 @@ function normalizeCategories(categories) {
     return categories;
 }
 
-const corsHeaders = {
-    'Access-Control-Allow-Origin': '*', 
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization, Cookie',
-    'Access-Control-Allow-Credentials': 'true' 
-};
+// corsHeaders 已移至 getCorsHeaders 函数动态生成
 
 async function fetchBestIcon(targetUrl) {
     const headers = {
@@ -2339,11 +2626,12 @@ async function fetchBestIcon(targetUrl) {
     return null;
 }
 
-async function handleIconProxy(request, ctx) {
+async function handleIconProxy(request, ctx, env) {
     const url = new URL(request.url);
     const targetUrl = url.searchParams.get('url');
+    const corsHeaders = getCorsHeaders(env, request);
 
-    if (!targetUrl) return new Response('Missing URL', { status: 400 });
+    if (!targetUrl) return new Response('Missing URL', { status: 400, headers: corsHeaders });
 
     const cacheKey = new Request(url.toString(), request);
     const cache = caches.default;
@@ -2355,18 +2643,30 @@ async function handleIconProxy(request, ctx) {
         response.headers.set('X-Icon-Cache-Status', 'HIT');
     } else {
         let upstreamResponse = null;
-        if (USE_DEFAULT_IMGAPI) {
-            const upstreamApi = `${DEFAULT_IMGAPI}${encodeURIComponent(targetUrl)}`;
-            upstreamResponse = await fetch(upstreamApi, {
-                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' }
-            });
-        } else {
+        const useExternalApi = env.USE_EXTERNAL_ICON_API === 'true';
+        
+        if (useExternalApi) {
+            try {
+                const upstreamApi = `${DEFAULT_IMGAPI}${encodeURIComponent(targetUrl)}`;
+                upstreamResponse = await fetch(upstreamApi, {
+                    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' }
+                });
+            } catch (e) {
+                logError('handleIconProxy', e, { targetUrl, method: 'external_api' });
+            }
+        }
+        
+        // 如果外部 API 失败或未启用，使用自建抓取
+        if (!upstreamResponse || !upstreamResponse.ok) {
             upstreamResponse = await fetchBestIcon(targetUrl);
         }
-        if (upstreamResponse) {
+        
+        const iconCacheMaxAge = getConfig(env, 'ICON_CACHE_MAX_AGE');
+        
+        if (upstreamResponse && upstreamResponse.ok) {
             response = new Response(upstreamResponse.body, upstreamResponse);
-            response.headers.set('Cache-Control', 'public, max-age=604800, s-maxage=604800');
-            response.headers.set('Access-Control-Allow-Origin', '*');
+            response.headers.set('Cache-Control', `public, max-age=${iconCacheMaxAge}, s-maxage=${iconCacheMaxAge}`);
+            response.headers.set('Access-Control-Allow-Origin', corsHeaders['Access-Control-Allow-Origin']);
             response.headers.set('X-Icon-Cache-Status', 'MISS');
             ctx.waitUntil(cache.put(cacheKey, response.clone()));
         } else {
@@ -2383,16 +2683,18 @@ async function handleIconProxy(request, ctx) {
             });
             response.headers.set('X-Icon-Cache-Status', 'DEFAULT');
         }
-        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Origin', corsHeaders['Access-Control-Allow-Origin']);
     
     }
 
     return response;
 }
 
-const MIN_BACKUP_INTERVAL_MS = 10 * 60 * 1000; 
+const MIN_BACKUP_INTERVAL_MS = DEFAULT_CONFIG.MIN_BACKUP_INTERVAL_MS;
 
 async function handleSmartBackup(env, currentData) {
+    const maxBackups = getConfig(env, 'MAX_BACKUPS');
+    
     try {
         const list = await env.CARD_ORDER.list({ prefix: `backup_${DEFAULT_USER}_` });
         let keys = list.keys;
@@ -2421,8 +2723,8 @@ async function handleSmartBackup(env, currentData) {
                 metadata: { timestamp: now }
             });
 
-            if (keys.length >= 10) { 
-                const deleteCount = keys.length + 1 - 10;
+            if (keys.length >= maxBackups) { 
+                const deleteCount = keys.length + 1 - maxBackups;
                 if(deleteCount > 0) {
                     const toDelete = keys.slice(0, deleteCount);
                     for (const key of toDelete) {
@@ -2432,36 +2734,52 @@ async function handleSmartBackup(env, currentData) {
             }
         }
     } catch (e) {
-        console.error("Smart backup failed:", e);
+        logError("handleSmartBackup", e);
     }
 }
 
 export default {
     async fetch(request, env, ctx) {
         const url = new URL(request.url);
+        const corsHeaders = getCorsHeaders(env, request);
 
         if (request.method === 'OPTIONS') {
             return new Response(null, { headers: corsHeaders });
         }
 
         if (url.pathname === '/api/icon') {
-            return handleIconProxy(request, ctx);
+            return handleIconProxy(request, ctx, env);
         }
 
         if (url.pathname === '/') {
-            return new Response(HTML_CONTENT, { headers: { 'Content-Type': 'text/html' } });
+            const htmlCacheMaxAge = getConfig(env, 'HTML_CACHE_MAX_AGE');
+            return new Response(HTML_CONTENT, { 
+                headers: { 
+                    'Content-Type': 'text/html; charset=utf-8',
+                    'Cache-Control': `public, max-age=${htmlCacheMaxAge}`,
+                    'X-Content-Type-Options': 'nosniff',
+                    'X-Frame-Options': 'SAMEORIGIN',
+                    'Referrer-Policy': 'strict-origin-when-cross-origin',
+                    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self' data:;"
+                } 
+            });
         }
 
         if (url.pathname === '/api/login' && request.method === 'POST') {
             try {
                 const { password } = await request.json();
-                if (password !== env.ADMIN_PASSWORD) throw new Error('Password mismatch');
+                
+                // 使用时序安全的密码比较
+                const isPasswordValid = await timingSafeEqual(password || '', env.ADMIN_PASSWORD || '');
+                if (!isPasswordValid) throw new Error('Password mismatch');
                 
                 const currentTime = Math.floor(Date.now() / 1000);
+                const accessTokenExpiry = getConfig(env, 'ACCESS_TOKEN_EXPIRY');
+                const refreshTokenExpiry = getConfig(env, 'REFRESH_TOKEN_EXPIRY');
 
                 const accessTokenPayload = { 
                     iat: currentTime, 
-                    exp: currentTime + 7200, 
+                    exp: currentTime + accessTokenExpiry, 
                     role: 'admin',
                     type: 'access' 
                 };
@@ -2469,11 +2787,13 @@ export default {
                 
                 const refreshTokenPayload = { 
                     iat: currentTime, 
-                    exp: currentTime + 2592000, 
+                    exp: currentTime + refreshTokenExpiry, 
                     role: 'admin',
                     type: 'refresh' 
                 };
                 const refreshToken = await createJWT(refreshTokenPayload, env.JWT_SECRET);
+                
+                logInfo('login', 'Login successful');
                 
                 const response = new Response(JSON.stringify({ 
                     valid: true, 
@@ -2483,10 +2803,11 @@ export default {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
                 });
                 
-                response.headers.append('Set-Cookie', `refreshToken=${refreshToken}; HttpOnly; Secure; SameSite=Strict; Path=/api/refreshToken; Max-Age=2592000`);
+                response.headers.append('Set-Cookie', `refreshToken=${refreshToken}; HttpOnly; Secure; SameSite=Strict; Path=/api/refreshToken; Max-Age=${refreshTokenExpiry}`);
                 
                 return response;
             } catch (e) {
+                logError('login', e);
                 return new Response(JSON.stringify({ valid: false, error: 'Auth failed' }), { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
             }
         }
@@ -2511,9 +2832,12 @@ export default {
                     return new Response(JSON.stringify({ error: 'Invalid token type' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
                 }
                 
+                const accessTokenExpiry = getConfig(env, 'ACCESS_TOKEN_EXPIRY');
+                const refreshTokenExpiry = getConfig(env, 'REFRESH_TOKEN_EXPIRY');
+                
                 const newAccessTokenPayload = { 
                     iat: currentTime, 
-                    exp: currentTime + 7200, 
+                    exp: currentTime + accessTokenExpiry, 
                     role: 'admin',
                     type: 'access'
                 };
@@ -2521,7 +2845,7 @@ export default {
 
                 const newRefreshTokenPayload = {
                     iat: currentTime,
-                    exp: currentTime + 2592000,
+                    exp: currentTime + refreshTokenExpiry,
                     role: 'admin',
                     type: 'refresh'
                 };
@@ -2534,10 +2858,11 @@ export default {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
                 });
 
-                response.headers.append('Set-Cookie', `refreshToken=${newRefreshToken}; HttpOnly; Secure; SameSite=Strict; Path=/api/refreshToken; Max-Age=2592000`);
+                response.headers.append('Set-Cookie', `refreshToken=${newRefreshToken}; HttpOnly; Secure; SameSite=Strict; Path=/api/refreshToken; Max-Age=${refreshTokenExpiry}`);
 
                 return response;
             } catch (e) {
+                logError('refreshToken', e);
                 return new Response(JSON.stringify({ error: 'Internal server error' }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
             }
         }
@@ -2602,6 +2927,7 @@ export default {
                 
                 return new Response(JSON.stringify({ success: true }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json'} });
             } catch (e) {
+                logError('saveData', e);
                 return new Response(JSON.stringify({ error: 'Bad Request' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json'} });
             }
         }
