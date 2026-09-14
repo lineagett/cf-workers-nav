@@ -18,17 +18,7 @@ const HTML_CONTENT = `
                             darkBorder: 'rgba(255, 255, 255, 0.1)',
                         }
                     },
-                    animation: {
-                        'blob': 'blob 10s infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        }
-                    },
+                    
                     boxShadow: {
                         'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
                         'glass-hover': '0 10px 40px rgba(0, 0, 0, 0.2)',
@@ -161,13 +151,13 @@ const HTML_CONTENT = `
     <!-- 背景层 -->
     <div class="fixed inset-0 -z-10 h-full w-full overflow-hidden bg-gray-100 dark:bg-[#0f172a]">
         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#0f172a] dark:to-[#1e293b]"></div>
-        <div class="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-emerald-200/30 dark:bg-indigo-900/20 rounded-full blur-[150px] mix-blend-multiply dark:mix-blend-screen animate-blob"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-200/30 dark:bg-purple-900/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-emerald-300/30 dark:bg-indigo-600/20 rounded-full blur-[150px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-300/30 dark:bg-purple-600/20 rounded-full blur-[120px]"></div>
     </div>
 
     <!-- 顶部固定导航 -->
     <div class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="backdrop-blur-xl bg-gray-100/60 dark:bg-[#0f172a]/60 border-b border-slate-200/40 dark:border-slate-700/40 shadow-sm supports-[backdrop-filter]:bg-gray-100/70">
+        <div class="backdrop-blur-md bg-gray-100/80 dark:bg-[#0f172a]/85 border-b border-slate-200/40 dark:border-slate-700/40 shadow-sm [transform:translateZ(0)]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16 gap-4">
                     
@@ -384,7 +374,7 @@ const HTML_CONTENT = `
     </div>
 
     <!-- 密码弹窗 -->
-    <div id="password-dialog-overlay" class="fixed inset-0 z-[70] bg-slate-900/70 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300 overlay-hidden">
+    <div id="password-dialog-overlay" class="fixed inset-0 z-[70] bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 overlay-hidden">
         <div id="password-dialog-box" class="bg-white dark:bg-[#1e293b] rounded-2xl shadow-2xl p-8 w-full max-w-sm border border-slate-100 dark:border-slate-700 text-center transform transition-all duration-300 dialog-scale-hidden">
             <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-500">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
@@ -400,7 +390,7 @@ const HTML_CONTENT = `
     </div>
 
     <!-- 自定义 Alert -->
-    <div id="custom-alert-overlay" class="fixed inset-0 z-[110] bg-slate-900/50 backdrop-blur-[2px] flex items-center justify-center p-4 transition-opacity duration-300 overlay-hidden">
+    <div id="custom-alert-overlay" class="fixed inset-0 z-[110] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 overlay-hidden">
         <div id="custom-alert-box" class="bg-white dark:bg-[#1e293b] rounded-2xl shadow-2xl p-6 max-w-sm w-full border border-slate-100 dark:border-slate-700 transform transition-all duration-300 dialog-scale-hidden">
             <h3 id="custom-alert-title" class="text-lg font-bold mb-2 text-slate-800 dark:text-white">提示</h3>
             <p id="custom-alert-content" class="text-slate-600 dark:text-slate-300 mb-6 text-sm leading-relaxed"></p>
@@ -411,7 +401,7 @@ const HTML_CONTENT = `
     </div>
 
     <!-- 自定义 Confirm -->
-    <div id="custom-confirm-overlay" class="fixed inset-0 z-[80] bg-slate-900/50 backdrop-blur-[2px] flex items-center justify-center p-4 transition-opacity duration-300 overlay-hidden">
+    <div id="custom-confirm-overlay" class="fixed inset-0 z-[80] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 overlay-hidden">
         <div id="custom-confirm-box" class="bg-white dark:bg-[#1e293b] rounded-2xl shadow-2xl p-6 max-w-sm w-full border border-slate-100 dark:border-slate-700 transform transition-all duration-300 dialog-scale-hidden">
             <h3 class="text-lg font-bold mb-3 text-slate-800 dark:text-white">确认操作</h3>
             <p id="custom-confirm-message" class="text-slate-600 dark:text-slate-300 mb-6 text-sm"></p>
@@ -444,7 +434,7 @@ const HTML_CONTENT = `
     </div>
 
     <!-- Tooltip Container -->
-    <div id="custom-tooltip" class="fixed hidden pointer-events-none max-w-xs whitespace-pre-wrap border leading-relaxed tracking-wide backdrop-blur-md rounded-xl shadow-glass px-4 py-2 text-sm transition-opacity duration-150
+    <div id="custom-tooltip" class="fixed hidden pointer-events-none max-w-xs whitespace-pre-wrap border leading-relaxed tracking-wide backdrop-blur-sm rounded-xl shadow-glass px-4 py-2 text-sm transition-opacity duration-150
         bg-white/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200/50 dark:border-slate-700/50">
     </div>
 
@@ -1285,6 +1275,8 @@ const HTML_CONTENT = `
     }
 
     const imgApi = '/api/icon?url='; 
+    const ICON_FALLBACK_SRC = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y='8' x2='12' y='12'/%3E%3Cline x1='12' y='16' x2='12.01' y='16'/%3E%3C/svg%3E";
+    const iconCache = new Map();
 
     // HTML 属性转义：防止用户数据中的引号破坏模板属性（配合 data-* 委托使用）
     function escAttr(v) {
@@ -1300,7 +1292,7 @@ const HTML_CONTENT = `
         
         let cardBaseClass = isAppLayout 
             ? 'flex flex-col items-center justify-start py-1 gap-1.5 hover:z-10' 
-            : 'flex flex-col p-4 bg-white/90 dark:bg-[#1e293b]/60 backdrop-blur-md supports-[backdrop-filter]:bg-white/80 border border-gray-200 dark:border-slate-700/50 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 shadow-sm hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] dark:shadow-none dark:hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.4)] hover:-translate-y-1.5';
+            : 'flex flex-col p-4 bg-white/90 dark:bg-[#1e293b]/60 backdrop-blur-sm bg-white/80 border border-gray-200 dark:border-slate-700/50 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 shadow-sm hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] dark:shadow-none dark:hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.4)] hover:-translate-y-1.5';
             
         if (link.isPrivate && !isAppLayout) {
             cardBaseClass += ' ring-1 ring-amber-400/40 bg-amber-50/80 dark:bg-amber-900/10 !border-amber-200 dark:!border-amber-700/50';
@@ -1342,9 +1334,19 @@ const HTML_CONTENT = `
         }
         icon.className = iconClass;
 
-        icon.src = (!link.icon || !link.icon.startsWith('http')) ? imgApi + link.url : link.icon;
+        let resolvedSrc;
+        if (link.icon && link.icon.startsWith('http')) {
+            resolvedSrc = link.icon;
+        } else if (iconCache.has(link.url)) {
+            resolvedSrc = iconCache.get(link.url);
+        } else {
+            resolvedSrc = imgApi + link.url;
+            iconCache.set(link.url, resolvedSrc);
+        }
+        icon.src = resolvedSrc;
         icon.onerror = function() {
-             this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y='8' x2='12' y='12'/%3E%3Cline x1='12' y='16' x2='12.01' y='16'/%3E%3C/svg%3E";
+            iconCache.set(link.url, ICON_FALLBACK_SRC);
+            this.src = ICON_FALLBACK_SRC;
         };
         
         const title = document.createElement('div');
@@ -1518,6 +1520,31 @@ const HTML_CONTENT = `
         });
     }
 
+    // 增量更新：仅重建单个分类的卡片网格
+    function renderCategoryGrid(category) {
+        const grid = document.getElementById('grid-' + category);
+        const cat = categories[category];
+        if (!grid || !cat) return;
+
+        const cardsFragment = document.createDocumentFragment();
+        cat.links.forEach(link => {
+            const card = createCard(link);
+            if (card) cardsFragment.appendChild(card);
+        });
+
+        // 只移除既有卡片，保留编辑模式下的“+”占位符
+        Array.from(grid.children).forEach(child => {
+            if (!child.classList.contains('add-card-placeholder')) child.remove();
+        });
+
+        const placeholder = grid.querySelector('.add-card-placeholder');
+        if (placeholder) {
+            grid.insertBefore(cardsFragment, placeholder);
+        } else {
+            grid.appendChild(cardsFragment);
+        }
+    }
+
     async function addCard() {
         if (!await validateTokenOrRedirect()) return;
         const name = document.getElementById('name-input').value.trim();
@@ -1536,15 +1563,18 @@ const HTML_CONTENT = `
             isPrivate: document.getElementById('private-checkbox').checked
         };
 
+        hideAddDialog();
+
+        categories[category].links.push(newLink);
         try {
-            categories[category].links.push(newLink);
             await saveLinks();
-            if (isEditMode || !newLink.isPrivate || isLoggedIn) {
-                 renderCategories();
-            }
-            hideAddDialog();
         } catch (e) {
             await customAlert('添加失败: ' + e);
+        }
+        // 增量更新：仅重建该分类网格（若该卡片本应可见）
+        if (isEditMode || !newLink.isPrivate || isLoggedIn) {
+            renderCategoryGrid(category);
+            renderCategoryButtons();
         }
     }
 
@@ -1561,12 +1591,14 @@ const HTML_CONTENT = `
         };
 
         let found = false;
+        let oldCategory = null;
         
         for (const cat in categories) {
              const idx = categories[cat].links.findIndex(l => l.url === oldLink.url);
              
              if (idx !== -1) {
                  found = true;
+                 oldCategory = cat;
                  
                  if (cat === updatedLink.category) {
                      categories[cat].links[idx] = updatedLink;
@@ -1587,12 +1619,15 @@ const HTML_CONTENT = `
              if(!categories[updatedLink.category]) {
                  categories[updatedLink.category] = { isHidden:false, links:[] };
              }
+             oldCategory = updatedLink.category;
              categories[updatedLink.category].links.push(updatedLink);
         }
 
-        await saveLinks();
-        renderCategories();
         hideAddDialog();
+        await saveLinks();
+        renderCategoryGrid(oldCategory);
+        if (updatedLink.category !== oldCategory) renderCategoryGrid(updatedLink.category);
+        renderCategoryButtons();
     }
 
     async function removeCard(card) {
