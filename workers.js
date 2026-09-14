@@ -2987,6 +2987,21 @@ function jsonResp(data, status = 200) {
 }
 
 // 服务端探活：优先 HEAD，遇 405/403/网络错误/超时 均降级为 GET，每次请求独立 4 秒超时
+async function isRateLimited(request, env, action, limit, windowSec) {
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const key = `ratelimit_${action}_${ip}`;
+    const now = Math.floor(Date.now() / 1000);
+    const raw = await env.CARD_ORDER.get(key);
+    const data = raw ? JSON.parse(raw) : { count: 0, start: now };
+    if (now - data.start > windowSec) {
+        data.count = 0;
+        data.start = now;
+    }
+    data.count++;
+    await env.CARD_ORDER.put(key, JSON.stringify(data), { expirationTtl: windowSec });
+    return data.count > limit;
+}
+
 async function probeBackendUrl(targetUrl) {
     const headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
@@ -3052,6 +3067,9 @@ export default {
         }
 
         if (url.pathname === '/api/check' && request.method === 'GET') {
+            if (await isRateLimited(request, env, 'check', 20, 60)) {
+                return jsonResp({ online: false, latency: 0, status: 'rate-limited' }, 429);
+            }
             const target = url.searchParams.get('url');
             if (!target) {
                 return jsonResp({ online: false, latency: 0, status: 'missing-url' }, 400);
@@ -3080,6 +3098,9 @@ export default {
 
         if (url.pathname === '/api/login' && request.method === 'POST') {
             try {
+                if (await isRateLimited(request, env, 'login', 5, 60)) {
+                    return new Response(JSON.stringify({ valid: false, error: 'Too many attempts, please try again later' }), { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+                }
                 const { password } = await request.json();
                 if (password !== env.ADMIN_PASSWORD) throw new Error('Password mismatch');
                 
