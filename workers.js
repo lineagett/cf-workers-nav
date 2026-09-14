@@ -2783,8 +2783,19 @@ export default {
 
         if (url.pathname === '/api/login' && request.method === 'POST') {
             try {
+                const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
+                const rateLimitKey = `login_attempts_${clientIP}`;
+                const attempts = parseInt(await env.CARD_ORDER.get(rateLimitKey)) || 0;
+                if (attempts >= 5) {
+                    return new Response(JSON.stringify({ valid: false, error: 'Too many attempts, please try again later' }), { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+                }
+
                 const { password } = await request.json();
-                if (password !== env.ADMIN_PASSWORD) throw new Error('Password mismatch');
+                if (password !== env.ADMIN_PASSWORD) {
+                    await env.CARD_ORDER.put(rateLimitKey, String(attempts + 1), { expirationTtl: 900 });
+                    throw new Error('Password mismatch');
+                }
+                await env.CARD_ORDER.delete(rateLimitKey);
                 
                 const currentTime = Math.floor(Date.now() / 1000);
 
