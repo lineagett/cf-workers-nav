@@ -9,8 +9,8 @@ const HTML_CONTENT = `
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20style%3D%22stop-color%3A%2310b981%3Bstop-opacity%3A1%22%20%2F%3E%3Cstop%20offset%3D%22100%25%22%20style%3D%22stop-color%3A%230d9488%3Bstop-opacity%3A1%22%20%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2224%22%20fill%3D%22url%28%23grad%29%22%2F%3E%3Cpath%20d%3D%22M64%2024l12.36%2025.04L104%2054.1l-20%2020.48%204.72%2027.52L64%2088.89%2039.28%20101.1%2044%2073.58%2024%2054.1l27.64-5.06L64%2024z%22%20fill%3D%22white%22%2F%3E%3C%2Fsvg%3E">
     <!-- BEGIN TAILWIND CSS（勿手动编辑） -->
     <style id="tailwind-css">
-*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:var(--font-sans);font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.\\!container{width:100%!important}.container{width:100%}@media (min-width:640px){.\\!container{max-width:640px!important}.container{max-width:640px}}@media (min-width:768px){.\\!container{max-width:768px!important}.container{max-width:768px}}@media (min-width:1024px){.\\!container{max-width:1024px!important}.container{max-width:1024px}}@media (min-width:1280px){.\\!container{max-width:1280px!important}.container{max-width:1280px}}@media (min-width:1536px){.\\!container{max-width:1536px!important}.container{max-width:1536px}}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}.pointer-events-none{pointer-events:none}.visible{visibility:visible}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.bottom-8{bottom:2rem}.bottom-\\[-10\\%\\]{bottom:-10%}.left-0{left:0}.left-\\[-10\\%\\]{left:-10%}.right-0{right:0}.right-1{right:.25rem}.right-1\\.5{right:.375rem}.right-2{right:.5rem}.right-8{right:2rem}.right-\\[-10\\%\\]{right:-10%}.right-\\[-4px\\]{right:-4px}.top-0{top:0}.top-1{top:.25rem}.top-1\\/2{top:50%}.top-2{top:.5rem}.top-6{top:1.5rem}.top-\\[-4px\\]{top:-4px}.top-\\[-5\\%\\]{top:-5%}.top-full{top:100%}.isolate{isolation:isolate}.-z-10{z-index:-10}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-50{z-index:50}.z-\\[110\\]{z-index:110}.z-\\[60\\]{z-index:60}.z-\\[65\\]{z-index:65}.z-\\[70\\]{z-index:70}.z-\\[80\\]{z-index:80}.z-\\[90\\]{z-index:90}.z-\\[95\\]{z-index:95}.mx-0{margin-left:0;margin-right:0}.mx-0\\.5{margin-left:.125rem;margin-right:.125rem}.mx-1{margin-left:.25rem;margin-right:.25rem}.mx-auto{margin-left:auto;margin-right:auto}.my-1{margin-top:.25rem}.mb-1,.my-1{margin-bottom:.25rem}.mb-1\\.5{margin-bottom:.375rem}.mb-2{margin-bottom:.5rem}.mb-2\\.5{margin-bottom:.625rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-auto{margin-left:auto}.mr-1{margin-right:.25rem}.mt-1{margin-top:.25rem}.mt-12{margin-top:3rem}.mt-2{margin-top:.5rem}.mt-4{margin-top:1rem}.mt-8{margin-top:2rem}.line-clamp-2{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.block{display:block}.inline-block{display:inline-block}.inline{display:inline}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.\\!grid{display:grid!important}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-3{height:.75rem}.h-3\\.5{height:.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-\\[500px\\]{height:500px}.h-\\[800px\\]{height:800px}.h-\\[92vh\\]{height:92vh}.h-full{height:100%}.h-px{height:1px}.max-h-48{max-height:12rem}.max-h-\\[760px\\]{max-height:760px}.min-h-0{min-height:0}.min-h-\\[1\\.25rem\\]{min-height:1.25rem}.min-h-\\[100px\\]{min-height:100px}.min-h-screen{min-height:100vh}.w-1{width:.25rem}.w-1\\.5{width:.375rem}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-24{width:6rem}.w-28{width:7rem}.w-3{width:.75rem}.w-3\\.5{width:.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-60{width:15rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-\\[120\\%\\]{width:120%}.w-\\[500px\\]{width:500px}.w-\\[800px\\]{width:800px}.w-auto{width:auto}.w-full{width:100%}.w-px{width:1px}.min-w-0{min-width:0}.min-w-\\[130px\\]{min-width:130px}.max-w-2xl{max-width:42rem}.max-w-7xl{max-width:80rem}.max-w-full{max-width:100%}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.max-w-xs{max-width:20rem}.flex-1{flex:1 1 0%}.flex-shrink-0,.shrink-0{flex-shrink:0}.basis-full{flex-basis:100%}.origin-top-right{transform-origin:top right}.-translate-y-0{--tw-translate-y:-0px}.-translate-y-0,.-translate-y-1{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1{--tw-translate-y:-0.25rem}.-translate-y-1\\/2{--tw-translate-y:-50%}.-translate-y-1\\/2,.translate-x-1{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-x-1{--tw-translate-x:0.25rem}.translate-x-1\\/2{--tw-translate-x:50%}.rotate-45,.translate-x-1\\/2{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-45{--tw-rotate:45deg}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}@keyframes spin{to{transform:rotate(1turn)}}.animate-spin{animation:spin 1s linear infinite}.cursor-move{cursor:move}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.resize-y{resize:vertical}.resize{resize:both}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.content-start{align-content:flex-start}.items-center{align-items:center}.justify-start{justify-content:flex-start}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-x-2{-moz-column-gap:.5rem;column-gap:.5rem}.gap-x-3{-moz-column-gap:.75rem;column-gap:.75rem}.gap-y-2{row-gap:.5rem}.gap-y-6{row-gap:1.5rem}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.25rem*var(--tw-space-y-reverse))}.space-y-10>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2.5rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.whitespace-pre-wrap{white-space:pre-wrap}.rounded-2xl{border-radius:1rem}.rounded-\\[1\\.2rem\\]{border-radius:1.2rem}.rounded-\\[var\\(--radius-2xl\\)\\]{border-radius:var(--radius-2xl)}.rounded-\\[var\\(--radius-lg\\)\\]{border-radius:var(--radius-lg)}.rounded-\\[var\\(--radius-xl\\)\\]{border-radius:var(--radius-xl)}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-sm{border-radius:.125rem}.rounded-xl{border-radius:.75rem}.rounded-l-\\[var\\(--radius-xl\\)\\]{border-top-left-radius:var(--radius-xl);border-bottom-left-radius:var(--radius-xl)}.rounded-r-\\[var\\(--radius-xl\\)\\]{border-top-right-radius:var(--radius-xl);border-bottom-right-radius:var(--radius-xl)}.rounded-tr-\\[var\\(--radius-2xl\\)\\]{border-top-right-radius:var(--radius-2xl)}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-l{border-left-width:1px}.border-dashed{border-style:dashed}.border-none{border-style:none}.\\!border-amber-200{--tw-border-opacity:1!important;border-color:rgb(253 230 138/var(--tw-border-opacity,1))!important}.\\!border-amber-700{--tw-border-opacity:1!important;border-color:rgb(180 83 9/var(--tw-border-opacity,1))!important}.border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_40\\%\\2c transparent\\)\\]{border-color:color-mix(in oklab,var(--border) 40%,transparent)}.border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_50\\%\\2c transparent\\)\\]{border-color:color-mix(in oklab,var(--border) 50%,transparent)}.border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_60\\%\\2c transparent\\)\\]{border-color:color-mix(in oklab,var(--border) 60%,transparent)}.border-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)\\2c var\\(--border\\)\\)\\]{border-color:color-mix(in oklab,var(--muted),var(--border))}.border-accent{border-color:var(--primary)}.border-line{border-color:var(--border)}.border-line-input{border-color:var(--input)}.border-transparent{border-color:transparent}.\\!bg-red-500{--tw-bg-opacity:1!important;background-color:rgb(239 68 68/var(--tw-bg-opacity,1))!important}.\\!bg-red-500\\/10{background-color:rgba(239,68,68,.1)!important}.bg-\\[color-mix\\(in_oklab\\2c color-mix\\(in_oklab\\2c var\\(--primary\\)_45\\%\\2c var\\(--background\\)\\)_30\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,color-mix(in oklab,var(--primary) 45%,var(--background)) 30%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--background\\)_80\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--background) 80%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_45\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--card) 45%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_85\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--card) 85%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_90\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--card) 90%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_90\\%\\2c var\\(--background\\)\\)\\]{background-color:color-mix(in oklab,var(--card) 90%,var(--background))}.bg-\\[color-mix\\(in_oklab\\2c var\\(--foreground\\)_35\\%\\2c var\\(--card\\)\\)\\]{background-color:color-mix(in oklab,var(--foreground) 35%,var(--card))}.bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_70\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--muted) 70%,transparent)}.bg-accent{background-color:var(--primary)}.bg-amber-400{--tw-bg-opacity:1;background-color:rgb(251 191 36/var(--tw-bg-opacity,1))}.bg-amber-900{--tw-bg-opacity:1;background-color:rgb(120 53 15/var(--tw-bg-opacity,1))}.bg-base{background-color:var(--background)}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-black\\/50{background-color:rgba(0,0,0,.5)}.bg-black\\/60{background-color:rgba(0,0,0,.6)}.bg-black\\/70{background-color:rgba(0,0,0,.7)}.bg-blue-300{--tw-bg-opacity:1;background-color:rgb(147 197 253/var(--tw-bg-opacity,1))}.bg-blue-300\\/30{background-color:rgba(147,197,253,.3)}.bg-blue-900{--tw-bg-opacity:1;background-color:rgb(30 58 138/var(--tw-bg-opacity,1))}.bg-card{background-color:var(--card)}.bg-line{background-color:var(--border)}.bg-line-input{background-color:var(--input)}.bg-muted{background-color:var(--muted)}.bg-purple-600{--tw-bg-opacity:1;background-color:rgb(147 51 234/var(--tw-bg-opacity,1))}.bg-red-900{--tw-bg-opacity:1;background-color:rgb(127 29 29/var(--tw-bg-opacity,1))}.bg-secondary{background-color:var(--secondary)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-slate-900\\/50{background-color:rgba(15,23,42,.5)}.bg-soft{background-color:var(--accent)}.bg-transparent{background-color:transparent}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right,var(--tw-gradient-stops))}.from-\\[var\\(--background\\)\\]{--tw-gradient-from:var(--background) var(--tw-gradient-from-position);--tw-gradient-to:hsla(0,0%,100%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-accent{--tw-gradient-from:var(--primary) var(--tw-gradient-from-position);--tw-gradient-to:hsla(0,0%,100%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-\\[var\\(--secondary\\)\\]{--tw-gradient-to:var(--secondary) var(--tw-gradient-to-position)}.to-teal-600{--tw-gradient-to:#0d9488 var(--tw-gradient-to-position)}.object-contain{-o-object-fit:contain;object-fit:contain}.p-1{padding:.25rem}.p-1\\.5{padding:.375rem}.p-2{padding:.5rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-1\\.5{padding-left:.375rem;padding-right:.375rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0{padding-top:0;padding-bottom:0}.py-0\\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\\.5{padding-top:.375rem;padding-bottom:.375rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-3\\.5{padding-top:.875rem;padding-bottom:.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-2{padding-bottom:.5rem}.pb-20{padding-bottom:5rem}.pb-4{padding-bottom:1rem}.pl-3{padding-left:.75rem}.pl-4{padding-left:1rem}.pr-2{padding-right:.5rem}.pr-\\[72px\\]{padding-right:72px}.pt-2{padding-top:.5rem}.pt-3{padding-top:.75rem}.pt-36{padding-top:9rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.font-sans{font-family:var(--font-sans)}.text-\\[10px\\]{font-size:10px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-wide{letter-spacing:.025em}.tracking-wider{letter-spacing:.05em}.tracking-widest{letter-spacing:.1em}.\\!text-red-600{--tw-text-opacity:1!important;color:rgb(220 38 38/var(--tw-text-opacity,1))!important}.text-accent{color:var(--primary)}.text-accent-foreground{color:var(--primary-foreground)}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.text-base{color:var(--background)}.text-base-foreground{color:var(--foreground)}.text-black{--tw-text-opacity:1;color:rgb(0 0 0/var(--tw-text-opacity,1))}.text-muted-foreground{color:var(--muted-foreground)}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-0{opacity:0}.opacity-100{opacity:1}.opacity-60{opacity:.6}.opacity-70{opacity:.7}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-2xl,.shadow-glass{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-glass{--tw-shadow:0 4px 30px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 30px var(--tw-shadow-color)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgba(0,0,0,.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color)}.shadow-inner,.shadow-lg{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.shadow-md,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.ring-1,.ring-2{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.ring-amber-400{--tw-ring-opacity:1;--tw-ring-color:rgb(251 191 36/var(--tw-ring-opacity,1))}.ring-amber-400\\/40{--tw-ring-color:rgba(251,191,36,.4)}.ring-black{--tw-ring-opacity:1;--tw-ring-color:rgb(0 0 0/var(--tw-ring-opacity,1))}.ring-black\\/5{--tw-ring-color:rgba(0,0,0,.05)}.ring-white{--tw-ring-opacity:1;--tw-ring-color:rgb(255 255 255/var(--tw-ring-opacity,1))}.blur-\\[120px\\]{--tw-blur:blur(120px)}.blur-\\[120px\\],.drop-shadow-sm{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-sm{--tw-drop-shadow:drop-shadow(0 1px 1px rgba(0,0,0,.05))}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px)}.backdrop-blur-md,.backdrop-blur-sm{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-\\[transform\\2c box-shadow\\2c border-color\\]{transition-property:transform,box-shadow,border-color;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1)}.duration-150,.transition-transform{transition-duration:.15s}.duration-200{transition-duration:.2s}.duration-300{transition-duration:.3s}.ease-\\[cubic-bezier\\(0\\.25\\2c 0\\.8\\2c 0\\.25\\2c 1\\)\\]{transition-timing-function:cubic-bezier(.25,.8,.25,1)}.ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}.ease-out{transition-timing-function:cubic-bezier(0,0,.2,1)}.\\[transform\\:translateZ\\(0\\)\\]{transform:translateZ(0)}.placeholder\\:text-muted-foreground::-moz-placeholder{color:var(--muted-foreground)}.placeholder\\:text-muted-foreground::placeholder{color:var(--muted-foreground)}.after\\:absolute:after{content:var(--tw-content);position:absolute}.after\\:left-\\[2px\\]:after{content:var(--tw-content);left:2px}.after\\:top-\\[2px\\]:after{content:var(--tw-content);top:2px}.after\\:h-4:after{content:var(--tw-content);height:1rem}.after\\:w-4:after{content:var(--tw-content);width:1rem}.after\\:rounded-full:after{content:var(--tw-content);border-radius:9999px}.after\\:border:after{content:var(--tw-content);border-width:1px}.after\\:border-\\[color-mix\\(in_oklab\\2c var\\(--muted-foreground\\)_40\\%\\2c var\\(--card\\)\\)\\]:after{content:var(--tw-content);border-color:color-mix(in oklab,var(--muted-foreground) 40%,var(--card))}.after\\:bg-white:after{content:var(--tw-content);--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.after\\:transition-all:after{content:var(--tw-content);transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.after\\:content-\\[\\'\\'\\]:after{--tw-content:"";content:var(--tw-content)}.focus-within\\:-translate-y-0\\.5:focus-within{--tw-translate-y:-0.125rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.focus-within\\:shadow-lg:focus-within{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.focus-within\\:ring-2:focus-within{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus-within\\:ring-\\[color-mix\\(in_oklab\\2c var\\(--ring\\)_50\\%\\2c transparent\\)\\]:focus-within{--tw-ring-color:color-mix(in oklab,var(--ring) 50%,transparent)}.hover\\:z-10:hover{z-index:10}.hover\\:-translate-y-0\\.5:hover{--tw-translate-y:-0.125rem}.hover\\:-translate-y-0\\.5:hover,.hover\\:-translate-y-1:hover{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\\:-translate-y-1:hover{--tw-translate-y:-0.25rem}.hover\\:-translate-y-1\\.5:hover{--tw-translate-y:-0.375rem}.hover\\:-translate-y-1\\.5:hover,.hover\\:translate-y-\\[-1px\\]:hover{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\\:translate-y-\\[-1px\\]:hover{--tw-translate-y:-1px}.hover\\:translate-y-\\[-2px\\]:hover{--tw-translate-y:-2px}.hover\\:scale-105:hover,.hover\\:translate-y-\\[-2px\\]:hover{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05}.hover\\:scale-110:hover{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\\:border-\\[color-mix\\(in_oklab\\2c var\\(--primary\\)_50\\%\\2c transparent\\)\\]:hover{border-color:color-mix(in oklab,var(--primary) 50%,transparent)}.hover\\:border-accent:hover{border-color:var(--primary)}.hover\\:border-line:hover{border-color:var(--border)}.hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--accent\\)_50\\%\\2c transparent\\)\\]:hover{background-color:color-mix(in oklab,var(--accent) 50%,transparent)}.hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_75\\%\\2c transparent\\)\\]:hover{background-color:color-mix(in oklab,var(--card) 75%,transparent)}.hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_80\\%\\2c transparent\\)\\]:hover{background-color:color-mix(in oklab,var(--muted) 80%,transparent)}.hover\\:bg-\\[var\\(--menu-hover\\)\\]:hover{background-color:var(--menu-hover)}.hover\\:bg-accent:hover{background-color:var(--primary)}.hover\\:bg-amber-100:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199/var(--tw-bg-opacity,1))}.hover\\:bg-blue-100:hover{--tw-bg-opacity:1;background-color:rgb(219 234 254/var(--tw-bg-opacity,1))}.hover\\:bg-muted:hover{background-color:var(--muted)}.hover\\:bg-red-100:hover{--tw-bg-opacity:1;background-color:rgb(254 226 226/var(--tw-bg-opacity,1))}.hover\\:bg-red-50:hover{--tw-bg-opacity:1;background-color:rgb(254 242 242/var(--tw-bg-opacity,1))}.hover\\:bg-secondary:hover{background-color:var(--secondary)}.hover\\:bg-soft:hover{background-color:var(--accent)}.hover\\:text-accent:hover{color:var(--primary)}.hover\\:text-accent-foreground:hover{color:var(--primary-foreground)}.hover\\:text-amber-600:hover{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.hover\\:text-blue-600:hover{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.hover\\:text-green-600:hover{--tw-text-opacity:1;color:rgb(22 163 74/var(--tw-text-opacity,1))}.hover\\:text-muted-foreground:hover{color:var(--muted-foreground)}.hover\\:text-red-500:hover{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.hover\\:text-red-600:hover{--tw-text-opacity:1;color:rgb(220 38 38/var(--tw-text-opacity,1))}.hover\\:underline:hover{text-decoration-line:underline}.hover\\:shadow-\\[0_8px_20px_-6px_rgba\\(0\\2c 0\\2c 0\\2c 0\\.1\\)\\]:hover{--tw-shadow:0 8px 20px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 8px 20px -6px var(--tw-shadow-color)}.hover\\:shadow-\\[0_8px_20px_-6px_rgba\\(0\\2c 0\\2c 0\\2c 0\\.1\\)\\]:hover,.hover\\:shadow-lg:hover{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.hover\\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.hover\\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.hover\\:shadow-md:hover,.hover\\:shadow-sm:hover{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.hover\\:shadow-sm:hover{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.focus\\:border-accent:focus{border-color:var(--primary)}.focus\\:border-transparent:focus{border-color:transparent}.focus\\:ring-0:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(var(--tw-ring-offset-width)) var(--tw-ring-color)}.focus\\:ring-0:focus,.focus\\:ring-2:focus{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.focus\\:ring-\\[color-mix\\(in_oklab\\2c var\\(--ring\\)_50\\%\\2c transparent\\)\\]:focus{--tw-ring-color:color-mix(in oklab,var(--ring) 50%,transparent)}.focus\\:ring-ring:focus{--tw-ring-color:var(--ring)}.active\\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95}.active\\:scale-95:active,.group:hover .group-hover\\:rotate-3{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\\:rotate-3{--tw-rotate:3deg}.group:hover .group-hover\\:scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05}.group:hover .group-hover\\:scale-105,.group:hover .group-hover\\:scale-110{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1}.group:hover .group-hover\\:bg-soft{background-color:var(--accent)}.group:hover .group-hover\\:text-accent{color:var(--primary)}.group:hover .group-hover\\:text-muted-foreground{color:var(--muted-foreground)}.group:active .group-active\\:scale-95{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.peer:checked~.peer-checked\\:border-accent{border-color:var(--primary)}.peer:checked~.peer-checked\\:bg-accent{background-color:var(--primary)}.peer:checked~.peer-checked\\:after\\:translate-x-full:after{content:var(--tw-content);--tw-translate-x:100%;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.peer:checked~.peer-checked\\:after\\:border-white:after{content:var(--tw-content);--tw-border-opacity:1;border-color:rgb(255 255 255/var(--tw-border-opacity,1))}.peer:focus~.peer-focus\\:outline-none{outline:2px solid transparent;outline-offset:2px}.dark\\:\\!border-amber-700\\/50:is(.dark *){border-color:rgba(180,83,9,.5)!important}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_40\\%\\2c transparent\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--border) 40%,transparent)}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_50\\%\\2c transparent\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--border) 50%,transparent)}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_60\\%\\2c transparent\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--border) 60%,transparent)}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_70\\%\\2c var\\(--border\\)\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--muted) 70%,var(--border))}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--muted-foreground\\)_40\\%\\2c var\\(--card\\)\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--muted-foreground) 40%,var(--card))}.dark\\:border-line:is(.dark *){border-color:var(--border)}.dark\\:border-line-input:is(.dark *){border-color:var(--input)}.dark\\:border-transparent:is(.dark *){border-color:transparent}.dark\\:bg-\\[color-mix\\(in_oklab\\2c color-mix\\(in_oklab\\2c var\\(--primary\\)_25\\%\\2c var\\(--background\\)\\)_30\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,color-mix(in oklab,var(--primary) 25%,var(--background)) 30%,transparent)}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--background\\)_85\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--background) 85%,transparent)}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_60\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--card) 60%,transparent)}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_90\\%\\2c var\\(--background\\)\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--card) 90%,var(--background))}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_25\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--muted) 25%,transparent)}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_50\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--muted) 50%,transparent)}.dark\\:bg-accent:is(.dark *){background-color:var(--primary)}.dark\\:bg-amber-900\\/10:is(.dark *){background-color:rgba(120,53,15,.1)}.dark\\:bg-base:is(.dark *){background-color:var(--background)}.dark\\:bg-card:is(.dark *){background-color:var(--card)}.dark\\:bg-line-input:is(.dark *){background-color:var(--input)}.dark\\:bg-muted:is(.dark *){background-color:var(--muted)}.dark\\:bg-purple-600\\/20:is(.dark *){background-color:rgba(147,51,234,.2)}.dark\\:bg-soft:is(.dark *){background-color:var(--accent)}.dark\\:bg-transparent:is(.dark *){background-color:transparent}.dark\\:from-\\[var\\(--background\\)\\]:is(.dark *){--tw-gradient-from:var(--background) var(--tw-gradient-from-position);--tw-gradient-to:hsla(0,0%,100%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.dark\\:to-\\[var\\(--card\\)\\]:is(.dark *){--tw-gradient-to:var(--card) var(--tw-gradient-to-position)}.dark\\:\\!text-red-400:is(.dark *){--tw-text-opacity:1!important;color:rgb(248 113 113/var(--tw-text-opacity,1))!important}.dark\\:text-amber-400:is(.dark *){--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.dark\\:text-base-foreground:is(.dark *){color:var(--foreground)}.dark\\:text-muted-foreground:is(.dark *){color:var(--muted-foreground)}.dark\\:text-white:is(.dark *){--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.dark\\:shadow-none:is(.dark *){--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.dark\\:ring-white\\/10:is(.dark *){--tw-ring-color:hsla(0,0%,100%,.1)}.dark\\:hover\\:border-\\[color-mix\\(in_oklab\\2c var\\(--primary\\)_50\\%\\2c transparent\\)\\]:hover:is(.dark *){border-color:color-mix(in oklab,var(--primary) 50%,transparent)}.dark\\:hover\\:border-accent:hover:is(.dark *){border-color:var(--primary)}.dark\\:hover\\:border-line:hover:is(.dark *){border-color:var(--border)}.dark\\:hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_40\\%\\2c transparent\\)\\]:hover:is(.dark *){background-color:color-mix(in oklab,var(--muted) 40%,transparent)}.dark\\:hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_60\\%\\2c transparent\\)\\]:hover:is(.dark *){background-color:color-mix(in oklab,var(--muted) 60%,transparent)}.dark\\:hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--secondary\\)_50\\%\\2c transparent\\)\\]:hover:is(.dark *){background-color:color-mix(in oklab,var(--secondary) 50%,transparent)}.dark\\:hover\\:bg-\\[var\\(--menu-hover\\)\\]:hover:is(.dark *){background-color:var(--menu-hover)}.dark\\:hover\\:bg-accent:hover:is(.dark *){background-color:var(--primary)}.dark\\:hover\\:bg-amber-900\\/30:hover:is(.dark *){background-color:rgba(120,53,15,.3)}.dark\\:hover\\:bg-blue-900\\/30:hover:is(.dark *){background-color:rgba(30,58,138,.3)}.dark\\:hover\\:bg-card:hover:is(.dark *){background-color:var(--card)}.dark\\:hover\\:bg-muted:hover:is(.dark *){background-color:var(--muted)}.dark\\:hover\\:bg-red-900\\/20:hover:is(.dark *){background-color:rgba(127,29,29,.2)}.dark\\:hover\\:bg-red-900\\/30:hover:is(.dark *){background-color:rgba(127,29,29,.3)}.dark\\:hover\\:bg-soft:hover:is(.dark *){background-color:var(--accent)}.dark\\:hover\\:text-accent:hover:is(.dark *){color:var(--primary)}.dark\\:hover\\:text-amber-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.dark\\:hover\\:text-base-foreground:hover:is(.dark *){color:var(--foreground)}.dark\\:hover\\:text-blue-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(96 165 250/var(--tw-text-opacity,1))}.dark\\:hover\\:text-green-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(74 222 128/var(--tw-text-opacity,1))}.dark\\:hover\\:text-red-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(248 113 113/var(--tw-text-opacity,1))}.dark\\:hover\\:shadow-\\[0_8px_20px_-6px_rgba\\(0\\2c 0\\2c 0\\2c 0\\.4\\)\\]:hover:is(.dark *){--tw-shadow:0 8px 20px -6px rgba(0,0,0,.4);--tw-shadow-colored:0 8px 20px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.group:hover .dark\\:group-hover\\:bg-soft:is(.dark *){background-color:var(--accent)}.group:hover .dark\\:group-hover\\:text-accent:is(.dark *){color:var(--primary)}.group:hover .dark\\:group-hover\\:text-base-foreground:is(.dark *){color:var(--foreground)}@media (min-width:640px){.sm\\:block{display:block}.sm\\:h-16{height:4rem}.sm\\:w-16{width:4rem}.sm\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.sm\\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\\:text-sm{font-size:.875rem;line-height:1.25rem}}@media (min-width:768px){.md\\:block{display:block}.md\\:inline{display:inline}.md\\:min-w-\\[5\\.5rem\\]{min-width:5.5rem}.md\\:basis-auto{flex-basis:auto}.md\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}}@media (min-width:1024px){.lg\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.lg\\:grid-cols-8{grid-template-columns:repeat(8,minmax(0,1fr))}.lg\\:px-8{padding-left:2rem;padding-right:2rem}}@media (min-width:1280px){.xl\\:grid-cols-10{grid-template-columns:repeat(10,minmax(0,1fr))}.xl\\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}}
-    </style>
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:var(--font-sans);font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.\\!container{width:100%!important}.container{width:100%}@media (min-width:640px){.\\!container{max-width:640px!important}.container{max-width:640px}}@media (min-width:768px){.\\!container{max-width:768px!important}.container{max-width:768px}}@media (min-width:1024px){.\\!container{max-width:1024px!important}.container{max-width:1024px}}@media (min-width:1280px){.\\!container{max-width:1280px!important}.container{max-width:1280px}}@media (min-width:1536px){.\\!container{max-width:1536px!important}.container{max-width:1536px}}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}.pointer-events-none{pointer-events:none}.visible{visibility:visible}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.bottom-8{bottom:2rem}.bottom-\\[-10\\%\\]{bottom:-10%}.left-0{left:0}.left-\\[-10\\%\\]{left:-10%}.right-0{right:0}.right-1{right:.25rem}.right-1\\.5{right:.375rem}.right-2{right:.5rem}.right-8{right:2rem}.right-\\[-10\\%\\]{right:-10%}.right-\\[-4px\\]{right:-4px}.top-0{top:0}.top-1{top:.25rem}.top-1\\/2{top:50%}.top-2{top:.5rem}.top-6{top:1.5rem}.top-\\[-4px\\]{top:-4px}.top-\\[-5\\%\\]{top:-5%}.top-full{top:100%}.isolate{isolation:isolate}.-z-10{z-index:-10}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-50{z-index:50}.z-\\[110\\]{z-index:110}.z-\\[60\\]{z-index:60}.z-\\[65\\]{z-index:65}.z-\\[70\\]{z-index:70}.z-\\[80\\]{z-index:80}.z-\\[90\\]{z-index:90}.z-\\[95\\]{z-index:95}.mx-0{margin-left:0;margin-right:0}.mx-0\\.5{margin-left:.125rem;margin-right:.125rem}.mx-1{margin-left:.25rem;margin-right:.25rem}.mx-auto{margin-left:auto;margin-right:auto}.my-1{margin-top:.25rem}.mb-1,.my-1{margin-bottom:.25rem}.mb-1\\.5{margin-bottom:.375rem}.mb-2{margin-bottom:.5rem}.mb-2\\.5{margin-bottom:.625rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-auto{margin-left:auto}.mr-1{margin-right:.25rem}.mt-1{margin-top:.25rem}.mt-12{margin-top:3rem}.mt-2{margin-top:.5rem}.mt-4{margin-top:1rem}.mt-8{margin-top:2rem}.line-clamp-2{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.block{display:block}.inline-block{display:inline-block}.inline{display:inline}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.\\!grid{display:grid!important}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-3{height:.75rem}.h-3\\.5{height:.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-\\[500px\\]{height:500px}.h-\\[800px\\]{height:800px}.h-\\[92vh\\]{height:92vh}.h-full{height:100%}.h-px{height:1px}.max-h-48{max-height:12rem}.max-h-\\[760px\\]{max-height:760px}.min-h-0{min-height:0}.min-h-\\[1\\.25rem\\]{min-height:1.25rem}.min-h-\\[100px\\]{min-height:100px}.min-h-screen{min-height:100vh}.w-1{width:.25rem}.w-1\\.5{width:.375rem}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-24{width:6rem}.w-28{width:7rem}.w-3{width:.75rem}.w-3\\.5{width:.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-60{width:15rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-\\[120\\%\\]{width:120%}.w-\\[500px\\]{width:500px}.w-\\[800px\\]{width:800px}.w-auto{width:auto}.w-full{width:100%}.w-px{width:1px}.min-w-0{min-width:0}.min-w-\\[130px\\]{min-width:130px}.max-w-2xl{max-width:42rem}.max-w-7xl{max-width:80rem}.max-w-full{max-width:100%}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.max-w-xs{max-width:20rem}.flex-1{flex:1 1 0%}.flex-shrink-0,.shrink-0{flex-shrink:0}.basis-full{flex-basis:100%}.origin-top-right{transform-origin:top right}.-translate-y-0{--tw-translate-y:-0px}.-translate-y-0,.-translate-y-1{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1{--tw-translate-y:-0.25rem}.-translate-y-1\\/2{--tw-translate-y:-50%}.-translate-y-1\\/2,.translate-x-1{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-x-1{--tw-translate-x:0.25rem}.translate-x-1\\/2{--tw-translate-x:50%}.rotate-45,.translate-x-1\\/2{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-45{--tw-rotate:45deg}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}@keyframes spin{to{transform:rotate(1turn)}}.animate-spin{animation:spin 1s linear infinite}.cursor-move{cursor:move}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.resize-y{resize:vertical}.resize{resize:both}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.gap-x-1{-moz-column-gap:.25rem;column-gap:.25rem}.gap-y-1\\.5{row-gap:.375rem}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.content-start{align-content:flex-start}.items-center{align-items:center}.justify-start{justify-content:flex-start}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-x-2{-moz-column-gap:.5rem;column-gap:.5rem}.gap-x-3{-moz-column-gap:.75rem;column-gap:.75rem}.gap-y-2{row-gap:.5rem}.gap-y-6{row-gap:1.5rem}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.25rem*var(--tw-space-y-reverse))}.space-y-10>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2.5rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.whitespace-pre-wrap{white-space:pre-wrap}.rounded-2xl{border-radius:1rem}.rounded-\\[1\\.2rem\\]{border-radius:1.2rem}.rounded-\\[var\\(--radius-2xl\\)\\]{border-radius:var(--radius-2xl)}.rounded-\\[var\\(--radius-lg\\)\\]{border-radius:var(--radius-lg)}.rounded-\\[var\\(--radius-xl\\)\\]{border-radius:var(--radius-xl)}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-sm{border-radius:.125rem}.rounded-xl{border-radius:.75rem}.rounded-l-\\[var\\(--radius-xl\\)\\]{border-top-left-radius:var(--radius-xl);border-bottom-left-radius:var(--radius-xl)}.rounded-r-\\[var\\(--radius-xl\\)\\]{border-top-right-radius:var(--radius-xl);border-bottom-right-radius:var(--radius-xl)}.rounded-tr-\\[var\\(--radius-2xl\\)\\]{border-top-right-radius:var(--radius-2xl)}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-l{border-left-width:1px}.border-dashed{border-style:dashed}.border-none{border-style:none}.\\!border-amber-200{--tw-border-opacity:1!important;border-color:rgb(253 230 138/var(--tw-border-opacity,1))!important}.\\!border-amber-700{--tw-border-opacity:1!important;border-color:rgb(180 83 9/var(--tw-border-opacity,1))!important}.border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_40\\%\\2c transparent\\)\\]{border-color:color-mix(in oklab,var(--border) 40%,transparent)}.border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_50\\%\\2c transparent\\)\\]{border-color:color-mix(in oklab,var(--border) 50%,transparent)}.border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_60\\%\\2c transparent\\)\\]{border-color:color-mix(in oklab,var(--border) 60%,transparent)}.border-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)\\2c var\\(--border\\)\\)\\]{border-color:color-mix(in oklab,var(--muted),var(--border))}.border-accent{border-color:var(--primary)}.border-line{border-color:var(--border)}.border-line-input{border-color:var(--input)}.border-transparent{border-color:transparent}.\\!bg-red-500{--tw-bg-opacity:1!important;background-color:rgb(239 68 68/var(--tw-bg-opacity,1))!important}.\\!bg-red-500\\/10{background-color:rgba(239,68,68,.1)!important}.bg-\\[color-mix\\(in_oklab\\2c color-mix\\(in_oklab\\2c var\\(--primary\\)_45\\%\\2c var\\(--background\\)\\)_30\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,color-mix(in oklab,var(--primary) 45%,var(--background)) 30%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--background\\)_80\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--background) 80%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_45\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--card) 45%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_85\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--card) 85%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_90\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--card) 90%,transparent)}.bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_90\\%\\2c var\\(--background\\)\\)\\]{background-color:color-mix(in oklab,var(--card) 90%,var(--background))}.bg-\\[color-mix\\(in_oklab\\2c var\\(--foreground\\)_35\\%\\2c var\\(--card\\)\\)\\]{background-color:color-mix(in oklab,var(--foreground) 35%,var(--card))}.bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_70\\%\\2c transparent\\)\\]{background-color:color-mix(in oklab,var(--muted) 70%,transparent)}.bg-accent{background-color:var(--primary)}.bg-amber-400{--tw-bg-opacity:1;background-color:rgb(251 191 36/var(--tw-bg-opacity,1))}.bg-amber-900{--tw-bg-opacity:1;background-color:rgb(120 53 15/var(--tw-bg-opacity,1))}.bg-base{background-color:var(--background)}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-black\\/50{background-color:rgba(0,0,0,.5)}.bg-black\\/60{background-color:rgba(0,0,0,.6)}.bg-black\\/70{background-color:rgba(0,0,0,.7)}.bg-blue-300{--tw-bg-opacity:1;background-color:rgb(147 197 253/var(--tw-bg-opacity,1))}.bg-blue-300\\/30{background-color:rgba(147,197,253,.3)}.bg-blue-900{--tw-bg-opacity:1;background-color:rgb(30 58 138/var(--tw-bg-opacity,1))}.bg-card{background-color:var(--card)}.bg-line{background-color:var(--border)}.bg-line-input{background-color:var(--input)}.bg-muted{background-color:var(--muted)}.bg-purple-600{--tw-bg-opacity:1;background-color:rgb(147 51 234/var(--tw-bg-opacity,1))}.bg-red-900{--tw-bg-opacity:1;background-color:rgb(127 29 29/var(--tw-bg-opacity,1))}.bg-secondary{background-color:var(--secondary)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-slate-900\\/50{background-color:rgba(15,23,42,.5)}.bg-soft{background-color:var(--accent)}.bg-transparent{background-color:transparent}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right,var(--tw-gradient-stops))}.from-\\[var\\(--background\\)\\]{--tw-gradient-from:var(--background) var(--tw-gradient-from-position);--tw-gradient-to:hsla(0,0%,100%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-accent{--tw-gradient-from:var(--primary) var(--tw-gradient-from-position);--tw-gradient-to:hsla(0,0%,100%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-\\[var\\(--secondary\\)\\]{--tw-gradient-to:var(--secondary) var(--tw-gradient-to-position)}.to-teal-600{--tw-gradient-to:#0d9488 var(--tw-gradient-to-position)}.object-contain{-o-object-fit:contain;object-fit:contain}.p-1{padding:.25rem}.p-1\\.5{padding:.375rem}.p-2{padding:.5rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-1\\.5{padding-left:.375rem;padding-right:.375rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0{padding-top:0;padding-bottom:0}.py-0\\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\\.5{padding-top:.375rem;padding-bottom:.375rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-3\\.5{padding-top:.875rem;padding-bottom:.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-2{padding-bottom:.5rem}.pb-20{padding-bottom:5rem}.pb-4{padding-bottom:1rem}.pl-3{padding-left:.75rem}.pl-4{padding-left:1rem}.pr-2{padding-right:.5rem}.pr-\\[72px\\]{padding-right:72px}.pt-2{padding-top:.5rem}.pt-3{padding-top:.75rem}.pt-36{padding-top:9rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.font-sans{font-family:var(--font-sans)}.text-\\[10px\\]{font-size:10px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-wide{letter-spacing:.025em}.tracking-wider{letter-spacing:.05em}.tracking-widest{letter-spacing:.1em}.\\!text-red-600{--tw-text-opacity:1!important;color:rgb(220 38 38/var(--tw-text-opacity,1))!important}.text-accent{color:var(--primary)}.text-accent-foreground{color:var(--primary-foreground)}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.text-base{color:var(--background)}.text-base-foreground{color:var(--foreground)}.text-black{--tw-text-opacity:1;color:rgb(0 0 0/var(--tw-text-opacity,1))}.text-muted-foreground{color:var(--muted-foreground)}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-0{opacity:0}.opacity-100{opacity:1}.opacity-60{opacity:.6}.opacity-70{opacity:.7}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-2xl,.shadow-glass{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-glass{--tw-shadow:0 4px 30px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 30px var(--tw-shadow-color)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgba(0,0,0,.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color)}.shadow-inner,.shadow-lg{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.shadow-md,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.ring-1,.ring-2{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.ring-amber-400{--tw-ring-opacity:1;--tw-ring-color:rgb(251 191 36/var(--tw-ring-opacity,1))}.ring-amber-400\\/40{--tw-ring-color:rgba(251,191,36,.4)}.ring-black{--tw-ring-opacity:1;--tw-ring-color:rgb(0 0 0/var(--tw-ring-opacity,1))}.ring-black\\/5{--tw-ring-color:rgba(0,0,0,.05)}.ring-white{--tw-ring-opacity:1;--tw-ring-color:rgb(255 255 255/var(--tw-ring-opacity,1))}.blur-\\[120px\\]{--tw-blur:blur(120px)}.blur-\\[120px\\],.drop-shadow-sm{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-sm{--tw-drop-shadow:drop-shadow(0 1px 1px rgba(0,0,0,.05))}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px)}.backdrop-blur-md,.backdrop-blur-sm{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-\\[transform\\2c box-shadow\\2c border-color\\]{transition-property:transform,box-shadow,border-color;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1)}.duration-150,.transition-transform{transition-duration:.15s}.duration-200{transition-duration:.2s}.duration-300{transition-duration:.3s}.ease-\\[cubic-bezier\\(0\\.25\\2c 0\\.8\\2c 0\\.25\\2c 1\\)\\]{transition-timing-function:cubic-bezier(.25,.8,.25,1)}.ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}.ease-out{transition-timing-function:cubic-bezier(0,0,.2,1)}.\\[transform\\:translateZ\\(0\\)\\]{transform:translateZ(0)}.placeholder\\:text-muted-foreground::-moz-placeholder{color:var(--muted-foreground)}.placeholder\\:text-muted-foreground::placeholder{color:var(--muted-foreground)}.after\\:absolute:after{content:var(--tw-content);position:absolute}.after\\:left-\\[2px\\]:after{content:var(--tw-content);left:2px}.after\\:top-\\[2px\\]:after{content:var(--tw-content);top:2px}.after\\:h-4:after{content:var(--tw-content);height:1rem}.after\\:w-4:after{content:var(--tw-content);width:1rem}.after\\:rounded-full:after{content:var(--tw-content);border-radius:9999px}.after\\:border:after{content:var(--tw-content);border-width:1px}.after\\:border-\\[color-mix\\(in_oklab\\2c var\\(--muted-foreground\\)_40\\%\\2c var\\(--card\\)\\)\\]:after{content:var(--tw-content);border-color:color-mix(in oklab,var(--muted-foreground) 40%,var(--card))}.after\\:bg-white:after{content:var(--tw-content);--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.after\\:transition-all:after{content:var(--tw-content);transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.after\\:content-\\[\\'\\'\\]:after{--tw-content:"";content:var(--tw-content)}.focus-within\\:-translate-y-0\\.5:focus-within{--tw-translate-y:-0.125rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.focus-within\\:shadow-lg:focus-within{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.focus-within\\:ring-2:focus-within{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus-within\\:ring-\\[color-mix\\(in_oklab\\2c var\\(--ring\\)_50\\%\\2c transparent\\)\\]:focus-within{--tw-ring-color:color-mix(in oklab,var(--ring) 50%,transparent)}.hover\\:z-10:hover{z-index:10}.hover\\:-translate-y-0\\.5:hover{--tw-translate-y:-0.125rem}.hover\\:-translate-y-0\\.5:hover,.hover\\:-translate-y-1:hover{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\\:-translate-y-1:hover{--tw-translate-y:-0.25rem}.hover\\:-translate-y-1\\.5:hover{--tw-translate-y:-0.375rem}.hover\\:-translate-y-1\\.5:hover,.hover\\:translate-y-\\[-1px\\]:hover{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\\:translate-y-\\[-1px\\]:hover{--tw-translate-y:-1px}.hover\\:translate-y-\\[-2px\\]:hover{--tw-translate-y:-2px}.hover\\:scale-105:hover,.hover\\:translate-y-\\[-2px\\]:hover{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05}.hover\\:scale-110:hover{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\\:border-\\[color-mix\\(in_oklab\\2c var\\(--primary\\)_50\\%\\2c transparent\\)\\]:hover{border-color:color-mix(in oklab,var(--primary) 50%,transparent)}.hover\\:border-accent:hover{border-color:var(--primary)}.hover\\:border-line:hover{border-color:var(--border)}.hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--accent\\)_50\\%\\2c transparent\\)\\]:hover{background-color:color-mix(in oklab,var(--accent) 50%,transparent)}.hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_75\\%\\2c transparent\\)\\]:hover{background-color:color-mix(in oklab,var(--card) 75%,transparent)}.hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_80\\%\\2c transparent\\)\\]:hover{background-color:color-mix(in oklab,var(--muted) 80%,transparent)}.hover\\:bg-\\[var\\(--menu-hover\\)\\]:hover{background-color:var(--menu-hover)}.hover\\:bg-accent:hover{background-color:var(--primary)}.hover\\:bg-amber-100:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199/var(--tw-bg-opacity,1))}.hover\\:bg-blue-100:hover{--tw-bg-opacity:1;background-color:rgb(219 234 254/var(--tw-bg-opacity,1))}.hover\\:bg-muted:hover{background-color:var(--muted)}.hover\\:bg-red-100:hover{--tw-bg-opacity:1;background-color:rgb(254 226 226/var(--tw-bg-opacity,1))}.hover\\:bg-red-50:hover{--tw-bg-opacity:1;background-color:rgb(254 242 242/var(--tw-bg-opacity,1))}.hover\\:bg-secondary:hover{background-color:var(--secondary)}.hover\\:bg-soft:hover{background-color:var(--accent)}.hover\\:text-accent:hover{color:var(--primary)}.hover\\:text-accent-foreground:hover{color:var(--primary-foreground)}.hover\\:text-amber-600:hover{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.hover\\:text-blue-600:hover{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.hover\\:text-green-600:hover{--tw-text-opacity:1;color:rgb(22 163 74/var(--tw-text-opacity,1))}.hover\\:text-muted-foreground:hover{color:var(--muted-foreground)}.hover\\:text-red-500:hover{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.hover\\:text-red-600:hover{--tw-text-opacity:1;color:rgb(220 38 38/var(--tw-text-opacity,1))}.hover\\:underline:hover{text-decoration-line:underline}.hover\\:shadow-\\[0_8px_20px_-6px_rgba\\(0\\2c 0\\2c 0\\2c 0\\.1\\)\\]:hover{--tw-shadow:0 8px 20px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 8px 20px -6px var(--tw-shadow-color)}.hover\\:shadow-\\[0_8px_20px_-6px_rgba\\(0\\2c 0\\2c 0\\2c 0\\.1\\)\\]:hover,.hover\\:shadow-lg:hover{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.hover\\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.hover\\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.hover\\:shadow-md:hover,.hover\\:shadow-sm:hover{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.hover\\:shadow-sm:hover{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.focus\\:border-accent:focus{border-color:var(--primary)}.focus\\:border-transparent:focus{border-color:transparent}.focus\\:ring-0:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(var(--tw-ring-offset-width)) var(--tw-ring-color)}.focus\\:ring-0:focus,.focus\\:ring-2:focus{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.focus\\:ring-\\[color-mix\\(in_oklab\\2c var\\(--ring\\)_50\\%\\2c transparent\\)\\]:focus{--tw-ring-color:color-mix(in oklab,var(--ring) 50%,transparent)}.focus\\:ring-ring:focus{--tw-ring-color:var(--ring)}.active\\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95}.active\\:scale-95:active,.group:hover .group-hover\\:rotate-3{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\\:rotate-3{--tw-rotate:3deg}.group:hover .group-hover\\:scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05}.group:hover .group-hover\\:scale-105,.group:hover .group-hover\\:scale-110{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1}.group:hover .group-hover\\:bg-soft{background-color:var(--accent)}.group:hover .group-hover\\:text-accent{color:var(--primary)}.group:hover .group-hover\\:text-muted-foreground{color:var(--muted-foreground)}.group:active .group-active\\:scale-95{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.peer:checked~.peer-checked\\:border-accent{border-color:var(--primary)}.peer:checked~.peer-checked\\:bg-accent{background-color:var(--primary)}.peer:checked~.peer-checked\\:after\\:translate-x-full:after{content:var(--tw-content);--tw-translate-x:100%;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.peer:checked~.peer-checked\\:after\\:border-white:after{content:var(--tw-content);--tw-border-opacity:1;border-color:rgb(255 255 255/var(--tw-border-opacity,1))}.peer:focus~.peer-focus\\:outline-none{outline:2px solid transparent;outline-offset:2px}.dark\\:\\!border-amber-700\\/50:is(.dark *){border-color:rgba(180,83,9,.5)!important}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_40\\%\\2c transparent\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--border) 40%,transparent)}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_50\\%\\2c transparent\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--border) 50%,transparent)}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--border\\)_60\\%\\2c transparent\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--border) 60%,transparent)}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_70\\%\\2c var\\(--border\\)\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--muted) 70%,var(--border))}.dark\\:border-\\[color-mix\\(in_oklab\\2c var\\(--muted-foreground\\)_40\\%\\2c var\\(--card\\)\\)\\]:is(.dark *){border-color:color-mix(in oklab,var(--muted-foreground) 40%,var(--card))}.dark\\:border-line:is(.dark *){border-color:var(--border)}.dark\\:border-line-input:is(.dark *){border-color:var(--input)}.dark\\:border-transparent:is(.dark *){border-color:transparent}.dark\\:bg-\\[color-mix\\(in_oklab\\2c color-mix\\(in_oklab\\2c var\\(--primary\\)_25\\%\\2c var\\(--background\\)\\)_30\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,color-mix(in oklab,var(--primary) 25%,var(--background)) 30%,transparent)}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--background\\)_85\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--background) 85%,transparent)}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_60\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--card) 60%,transparent)}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--card\\)_90\\%\\2c var\\(--background\\)\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--card) 90%,var(--background))}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_25\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--muted) 25%,transparent)}.dark\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_50\\%\\2c transparent\\)\\]:is(.dark *){background-color:color-mix(in oklab,var(--muted) 50%,transparent)}.dark\\:bg-accent:is(.dark *){background-color:var(--primary)}.dark\\:bg-amber-900\\/10:is(.dark *){background-color:rgba(120,53,15,.1)}.dark\\:bg-base:is(.dark *){background-color:var(--background)}.dark\\:bg-card:is(.dark *){background-color:var(--card)}.dark\\:bg-line-input:is(.dark *){background-color:var(--input)}.dark\\:bg-muted:is(.dark *){background-color:var(--muted)}.dark\\:bg-purple-600\\/20:is(.dark *){background-color:rgba(147,51,234,.2)}.dark\\:bg-soft:is(.dark *){background-color:var(--accent)}.dark\\:bg-transparent:is(.dark *){background-color:transparent}.dark\\:from-\\[var\\(--background\\)\\]:is(.dark *){--tw-gradient-from:var(--background) var(--tw-gradient-from-position);--tw-gradient-to:hsla(0,0%,100%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.dark\\:to-\\[var\\(--card\\)\\]:is(.dark *){--tw-gradient-to:var(--card) var(--tw-gradient-to-position)}.dark\\:\\!text-red-400:is(.dark *){--tw-text-opacity:1!important;color:rgb(248 113 113/var(--tw-text-opacity,1))!important}.dark\\:text-amber-400:is(.dark *){--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.dark\\:text-base-foreground:is(.dark *){color:var(--foreground)}.dark\\:text-muted-foreground:is(.dark *){color:var(--muted-foreground)}.dark\\:text-white:is(.dark *){--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.dark\\:shadow-none:is(.dark *){--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.dark\\:ring-white\\/10:is(.dark *){--tw-ring-color:hsla(0,0%,100%,.1)}.dark\\:hover\\:border-\\[color-mix\\(in_oklab\\2c var\\(--primary\\)_50\\%\\2c transparent\\)\\]:hover:is(.dark *){border-color:color-mix(in oklab,var(--primary) 50%,transparent)}.dark\\:hover\\:border-accent:hover:is(.dark *){border-color:var(--primary)}.dark\\:hover\\:border-line:hover:is(.dark *){border-color:var(--border)}.dark\\:hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_40\\%\\2c transparent\\)\\]:hover:is(.dark *){background-color:color-mix(in oklab,var(--muted) 40%,transparent)}.dark\\:hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--muted\\)_60\\%\\2c transparent\\)\\]:hover:is(.dark *){background-color:color-mix(in oklab,var(--muted) 60%,transparent)}.dark\\:hover\\:bg-\\[color-mix\\(in_oklab\\2c var\\(--secondary\\)_50\\%\\2c transparent\\)\\]:hover:is(.dark *){background-color:color-mix(in oklab,var(--secondary) 50%,transparent)}.dark\\:hover\\:bg-\\[var\\(--menu-hover\\)\\]:hover:is(.dark *){background-color:var(--menu-hover)}.dark\\:hover\\:bg-accent:hover:is(.dark *){background-color:var(--primary)}.dark\\:hover\\:bg-amber-900\\/30:hover:is(.dark *){background-color:rgba(120,53,15,.3)}.dark\\:hover\\:bg-blue-900\\/30:hover:is(.dark *){background-color:rgba(30,58,138,.3)}.dark\\:hover\\:bg-card:hover:is(.dark *){background-color:var(--card)}.dark\\:hover\\:bg-muted:hover:is(.dark *){background-color:var(--muted)}.dark\\:hover\\:bg-red-900\\/20:hover:is(.dark *){background-color:rgba(127,29,29,.2)}.dark\\:hover\\:bg-red-900\\/30:hover:is(.dark *){background-color:rgba(127,29,29,.3)}.dark\\:hover\\:bg-soft:hover:is(.dark *){background-color:var(--accent)}.dark\\:hover\\:text-accent:hover:is(.dark *){color:var(--primary)}.dark\\:hover\\:text-amber-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.dark\\:hover\\:text-base-foreground:hover:is(.dark *){color:var(--foreground)}.dark\\:hover\\:text-blue-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(96 165 250/var(--tw-text-opacity,1))}.dark\\:hover\\:text-green-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(74 222 128/var(--tw-text-opacity,1))}.dark\\:hover\\:text-red-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(248 113 113/var(--tw-text-opacity,1))}.dark\\:hover\\:shadow-\\[0_8px_20px_-6px_rgba\\(0\\2c 0\\2c 0\\2c 0\\.4\\)\\]:hover:is(.dark *){--tw-shadow:0 8px 20px -6px rgba(0,0,0,.4);--tw-shadow-colored:0 8px 20px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.group:hover .dark\\:group-hover\\:bg-soft:is(.dark *){background-color:var(--accent)}.group:hover .dark\\:group-hover\\:text-accent:is(.dark *){color:var(--primary)}.group:hover .dark\\:group-hover\\:text-base-foreground:is(.dark *){color:var(--foreground)}@media (min-width:640px){.sm\\:block{display:block}.sm\\:h-16{height:4rem}.sm\\:w-16{width:4rem}.sm\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.sm\\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\\:text-sm{font-size:.875rem;line-height:1.25rem}}@media (min-width:768px){.md\\:block{display:block}.md\\:inline{display:inline}.md\\:min-w-\\[5\\.5rem\\]{min-width:5.5rem}.md\\:basis-auto{flex-basis:auto}.md\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}}@media (min-width:1024px){.lg\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.lg\\:grid-cols-8{grid-template-columns:repeat(8,minmax(0,1fr))}.lg\\:px-8{padding-left:2rem;padding-right:2rem}}@media (min-width:1280px){.xl\\:grid-cols-10{grid-template-columns:repeat(10,minmax(0,1fr))}.xl\\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}}
+    @media (min-width:640px){.sm\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}}@media (min-width:768px){.md\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.md\\:grid-cols-8{grid-template-columns:repeat(8,minmax(0,1fr))}}@media (min-width:1024px){.lg\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.lg\\:grid-cols-10{grid-template-columns:repeat(10,minmax(0,1fr))}}@media (min-width:1280px){.xl\\:grid-cols-8{grid-template-columns:repeat(8,minmax(0,1fr))}.xl\\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}}</style>
     <!-- END TAILWIND CSS -->
     <style>
         /* ===== 主题 CSS 变量 ===== */
@@ -469,8 +469,8 @@ const HTML_CONTENT = `
                 <div class="flex items-center justify-between h-16 gap-4">
                     
                     <!-- Logo -->
-                    <a class="flex items-center gap-2 flex-shrink-0 group cursor-pointer bg-[color-mix(in_oklab,var(--card)_45%,transparent)] dark:bg-transparent hover:bg-[color-mix(in_oklab,var(--card)_75%,transparent)] dark:hover:bg-card px-3 py-1.5 rounded-xl border border-[color-mix(in_oklab,var(--border)_50%,transparent)] dark:border-transparent transition-all duration-300 hover:shadow-md hover:shadow-accent/10 hover:-translate-y-0.5" href="/">
-                        <div class="w-8 h-8 flex items-center justify-center bg-gradient-to-tr from-accent to-teal-600 rounded-lg text-white shadow-lg shadow-accent/30 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                    <a class="flex items-center gap-2 flex-shrink-0 group cursor-pointer bg-[color-mix(in_oklab,var(--card)_45%,transparent)] dark:bg-transparent hover:bg-[color-mix(in_oklab,var(--card)_75%,transparent)] dark:hover:bg-card px-3 py-1.5 rounded-xl border border-[color-mix(in_oklab,var(--border)_50%,transparent)] dark:border-transparent transition-all duration-300 hover:shadow-md hover:-translate-y-0.5" href="/">
+                        <div class="w-8 h-8 flex items-center justify-center bg-gradient-to-tr from-accent to-teal-600 rounded-lg text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                             </svg>
@@ -535,18 +535,6 @@ const HTML_CONTENT = `
                                         编辑模式
                                     </button>
 
-                                    <!-- 一键检测 -->
-                                    <div id="check-all-menu" class="hidden">
-                                        <div class="h-px bg-muted dark:bg-[color-mix(in_oklab,var(--muted)_50%,transparent)] mx-1 my-1"></div>
-                                        <button id="check-all-btn" onclick="checkAllSites()" class="w-full text-left px-3 py-2.5 rounded-lg text-sm text-base-foreground dark:text-base-foreground hover:bg-[var(--menu-hover)] hover:text-accent dark:hover:text-accent transition-colors flex items-center justify-between gap-3 font-medium">
-                                            <span class="flex items-center gap-3">
-                                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                                一键检测
-                                            </span>
-                                            <span id="check-all-status" class="text-xs font-normal text-muted-foreground dark:text-muted-foreground"></span>
-                                        </button>
-                                    </div>
-
                                     <!-- 导入导出 (仅登录显示) -->
                                     <div id="data-tools-menu" class="hidden">
                                          <div class="h-px bg-muted dark:bg-[color-mix(in_oklab,var(--muted)_50%,transparent)] mx-1 my-1"></div>
@@ -571,6 +559,20 @@ const HTML_CONTENT = `
                                         <svg class="w-3.5 h-3.5 ml-auto text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                                     </button>
 
+                                    <!-- 紧凑模式（卡片） -->
+                                    <div class="px-3 py-2.5 flex items-center justify-between text-sm text-base-foreground dark:text-base-foreground hover:bg-[var(--menu-hover)] rounded-lg group">
+                                        <span class="flex items-center gap-3">
+                                            <svg class="w-4 h-4 text-muted-foreground group-hover:text-muted-foreground dark:text-muted-foreground dark:group-hover:text-base-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                                            </svg>
+                                            紧凑模式
+                                        </span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="compact-switch-checkbox" onchange="toggleCompactMode()" class="sr-only peer">
+                                            <div class="w-9 h-5 bg-[color-mix(in_oklab,var(--foreground)_35%,var(--card))] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[color-mix(in_oklab,var(--muted-foreground)_40%,var(--card))] after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-[color-mix(in_oklab,var(--muted-foreground)_40%,var(--card))] peer-checked:bg-accent"></div>
+                                        </label>
+                                    </div>
+                                    
                                     <!-- 【新增】APP 布局切换 -->
                                     <div class="px-3 py-2.5 flex items-center justify-between text-sm text-base-foreground dark:text-base-foreground hover:bg-[var(--menu-hover)] rounded-lg group">
                                         <span class="flex items-center gap-3">
@@ -585,6 +587,21 @@ const HTML_CONTENT = `
                                             <div class="w-9 h-5 bg-[color-mix(in_oklab,var(--foreground)_35%,var(--card))] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[color-mix(in_oklab,var(--muted-foreground)_40%,var(--card))] after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-[color-mix(in_oklab,var(--muted-foreground)_40%,var(--card))] peer-checked:bg-accent"></div>
                                         </label>
                                     </div>
+
+                                    <!-- 一键检测 + 刷新图标 -->
+                                    <div id="check-all-menu" class="hidden border-t border-line dark:border-line-input my-1">
+                                        <button id="check-all-btn" onclick="checkAllSites()" class="w-full text-left px-3 py-2.5 rounded-lg text-sm text-base-foreground dark:text-base-foreground hover:bg-[var(--menu-hover)] hover:text-accent dark:hover:text-accent transition-colors flex items-center justify-between gap-3 font-medium">
+                                            <span class="flex items-center gap-3">
+                                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                                一键检测
+                                            </span>
+                                            <span id="check-all-status" class="text-xs font-normal text-muted-foreground dark:text-muted-foreground"></span>
+                                        </button>
+                                    </div>
+                                    <button id="refresh-icons-btn" onclick="refreshAllIcons()" class="w-full text-left px-3 py-2.5 rounded-lg text-sm text-base-foreground dark:text-base-foreground hover:bg-[var(--menu-hover)] hover:text-accent dark:hover:text-accent transition-colors flex items-center gap-3 font-medium">
+                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                                        刷新所有网站图标
+                                    </button>
                                     
                                     <div class="px-3 py-2.5 flex items-center justify-between text-sm text-base-foreground dark:text-base-foreground hover:bg-[var(--menu-hover)] rounded-lg group">
                                         <span class="flex items-center gap-3">
@@ -698,7 +715,7 @@ const HTML_CONTENT = `
             </div>
             <div class="flex justify-end gap-3 mt-8">
                 <button id="dialog-cancel-btn" class="px-5 py-2.5 rounded-[var(--radius-xl)] text-sm font-medium text-muted-foreground hover:bg-muted dark:text-muted-foreground dark:hover:bg-muted transition-colors">取消</button>
-                <button id="dialog-confirm-btn" class="px-5 py-2.5 rounded-[var(--radius-xl)] text-sm font-medium text-accent-foreground bg-accent hover:bg-accent shadow-lg shadow-accent/25 transition-all hover:translate-y-[-1px]">确定</button>
+                <button id="dialog-confirm-btn" class="px-5 py-2.5 rounded-[var(--radius-xl)] text-sm font-medium text-accent-foreground bg-accent hover:bg-accent shadow-lg transition-all hover:translate-y-[-1px]">确定</button>
             </div>
         </div>
     </div>
@@ -711,10 +728,11 @@ const HTML_CONTENT = `
             </div>
             <h3 class="text-xl font-bold mb-2 text-base-foreground">身份验证</h3>
             <p class="text-sm text-muted-foreground mb-6">请输入管理员密码以继续操作</p>
-            <input type="password" id="password-input" placeholder="访问密码" class="w-full px-4 py-3 rounded-[var(--radius-xl)] bg-muted dark:bg-muted border border-line dark:border-line-input focus:ring-2 focus:ring-ring focus:border-transparent outline-none mb-6 dark:text-white text-center tracking-widest text-lg transition-all">
+            <input type="password" id="password-input" placeholder="访问密码" class="w-full px-4 py-3 rounded-[var(--radius-xl)] bg-muted dark:bg-muted border border-line dark:border-line-input focus:ring-2 focus:ring-ring focus:border-transparent outline-none mb-4 dark:text-white text-center tracking-widest text-lg transition-all">
+            <input type="text" id="totp-input" placeholder="6位动态验证码（若已启用双因素）" inputmode="numeric" autocomplete="one-time-code" maxlength="6" class="w-full px-4 py-3 rounded-[var(--radius-xl)] bg-muted dark:bg-muted border border-line dark:border-line-input focus:ring-2 focus:ring-ring focus:border-transparent outline-none mb-6 dark:text-white text-center tracking-widest text-lg transition-all">
             <div class="flex gap-3">
                 <button id="password-cancel-btn" class="flex-1 py-2.5 rounded-[var(--radius-xl)] text-muted-foreground bg-muted hover:bg-secondary dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted font-medium transition-colors">取消</button>
-                <button id="password-confirm-btn" class="flex-1 py-2.5 rounded-[var(--radius-xl)] text-accent-foreground bg-accent hover:bg-accent shadow-lg shadow-accent/25 font-medium transition-colors">确认登录</button>
+                <button id="password-confirm-btn" class="flex-1 py-2.5 rounded-[var(--radius-xl)] text-accent-foreground bg-accent hover:bg-accent shadow-lg font-medium transition-colors">确认登录</button>
             </div>
         </div>
     </div>
@@ -725,7 +743,7 @@ const HTML_CONTENT = `
             <h3 id="custom-alert-title" class="text-lg font-bold mb-2 text-base-foreground">提示</h3>
             <p id="custom-alert-content" class="text-muted-foreground mb-6 text-sm leading-relaxed"></p>
             <div class="flex justify-end">
-                <button id="custom-alert-confirm" class="px-5 py-2 bg-accent hover:bg-accent text-accent-foreground rounded-[var(--radius-xl)] text-sm font-medium transition-colors shadow-lg shadow-accent/20">我知道了</button>
+                <button id="custom-alert-confirm" class="px-5 py-2 bg-accent hover:bg-accent text-accent-foreground rounded-[var(--radius-xl)] text-sm font-medium transition-colors shadow-lg">我知道了</button>
             </div>
         </div>
     </div>
@@ -737,7 +755,7 @@ const HTML_CONTENT = `
             <p id="custom-confirm-message" class="text-muted-foreground mb-6 text-sm"></p>
             <div class="flex justify-end gap-3">
                 <button id="custom-confirm-cancel" class="px-4 py-2 text-sm text-muted-foreground hover:bg-muted rounded-[var(--radius-xl)] dark:text-muted-foreground dark:hover:bg-muted transition-colors font-medium">取消</button>
-                <button id="custom-confirm-ok" class="px-4 py-2 text-sm text-accent-foreground bg-accent hover:bg-accent rounded-[var(--radius-xl)] shadow-lg shadow-accent/20 transition-colors font-medium">确定</button>
+                <button id="custom-confirm-ok" class="px-4 py-2 text-sm text-accent-foreground bg-accent hover:bg-accent rounded-[var(--radius-xl)] shadow-lg transition-colors font-medium">确定</button>
             </div>
         </div>
     </div>
@@ -787,7 +805,7 @@ const HTML_CONTENT = `
                         <div class="relative mb-2">
                             <input type="text" id="theme-input" placeholder="粘贴主题ID 或完整链接 themes/xxx"
                                 class="w-full min-w-0 pl-4 pr-[72px] py-2.5 rounded-[var(--radius-xl)] bg-muted dark:bg-muted border border-line-input focus:ring-2 focus:ring-[color-mix(in_oklab,var(--ring)_50%,transparent)] outline-none transition-all text-base-foreground dark:text-white">
-                            <button onclick="applyCustomTheme()" class="absolute right-1.5 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-[var(--radius-lg)] text-sm font-medium text-accent-foreground bg-accent hover:bg-accent shadow-lg shadow-accent/20 transition-all">应用</button>
+                            <button onclick="applyCustomTheme()" class="absolute right-1.5 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-[var(--radius-lg)] text-sm font-medium text-accent-foreground bg-accent hover:bg-accent shadow-lg transition-all">应用</button>
                         </div>
                         <p id="theme-status" class="hidden text-xs mb-2 text-muted-foreground" style="color: var(--muted-foreground);"></p>
                         <a href="https://tweakcn.com/community" target="_blank" rel="noopener" class="text-xs text-accent hover:underline inline-flex items-center gap-1">更多主题：tweakcn.com/community ↗</a>
@@ -871,9 +889,13 @@ const HTML_CONTENT = `
     </div>
 
     <script>
+    window.addEventListener('beforeunload', (e) => { e.preventDefault(); e.returnValue = ''; });
+    window.onbeforeunload = function() { return ''; };
+
     let isEditMode = false;
     let isLoggedIn = false;
     let isAppLayout = localStorage.getItem('appLayout') === 'true';
+    let isCompact = localStorage.getItem('compactMode') === 'true';
 
     let editCardMode = false;
     let isEditCategoryMode = false;
@@ -1050,6 +1072,43 @@ const HTML_CONTENT = `
         loadSections();
     }
 
+    // 紧凑模式在浏览态与编辑态均生效
+    function isCompactActive() {
+        return isCompact;
+    }
+
+    function toggleCompactMode() {
+        isCompact = !isCompact;
+        localStorage.setItem('compactMode', isCompact);
+
+        const checkbox = document.getElementById('compact-switch-checkbox');
+        if (checkbox) checkbox.checked = isCompact;
+
+        document.body.classList.toggle('compact-mode', isCompactActive());
+        loadSections();
+    }
+
+    function refreshAllIcons() {
+        const imgs = Array.prototype.slice.call(document.querySelectorAll('[data-url] img[src*="/api/icon"]'));
+        if (imgs.length === 0) { alert('没有可刷新的默认图标（自定义图标不会刷新）'); return; }
+
+        const stamp = Date.now();
+        imgs.forEach((img) => {
+            try {
+                const u = new URL(img.getAttribute('src'), location.origin);
+                u.searchParams.set('v', stamp);
+                img.classList.remove('opacity-100');
+                img.classList.add('opacity-0');
+                img.onload = function() {
+                    this.classList.add('opacity-100');
+                    this.classList.remove('opacity-0');
+                };
+                img.onerror = function() { this.classList.add('opacity-100'); this.classList.remove('opacity-0'); };
+                img.src = u.toString();
+            } catch (e) {}
+        });
+    }
+
     function logAction(action, details) {
         console.log(\`\${new Date().toISOString()}: \${action} - \`, details);
     }
@@ -1116,6 +1175,7 @@ const HTML_CONTENT = `
     document.addEventListener('DOMContentLoaded', async () => {
         const loadingMask = document.getElementById('loading-mask');
         if (loadingMask) loadingMask.classList.remove('hidden');
+        document.body.classList.toggle('compact-mode', isCompactActive());
         initializeUIComponents();
         renderSearchEngineMenu();
         await checkLoginStatusAndLoad();
@@ -1144,6 +1204,7 @@ const HTML_CONTENT = `
         const elements = {
             themeSwitchCheckbox: document.getElementById('theme-switch-checkbox'),
             layoutSwitchCheckbox: document.getElementById('layout-switch-checkbox'),
+            compactSwitchCheckbox: document.getElementById('compact-switch-checkbox'),
             savePrefCheckbox: document.getElementById('save-preference-checkbox'),
             searchButton: document.getElementById('search-button'),
             searchInput: document.getElementById('search-input'),
@@ -1168,6 +1229,10 @@ const HTML_CONTENT = `
 
         if(elements.layoutSwitchCheckbox) {
             elements.layoutSwitchCheckbox.checked = isAppLayout;
+        }
+
+        if(elements.compactSwitchCheckbox) {
+            elements.compactSwitchCheckbox.checked = isCompact;
         }
         
         const savedPref = localStorage.getItem('savePreferences') === 'true';
@@ -1378,7 +1443,7 @@ const HTML_CONTENT = `
             await customAlert('该分类已存在');
             return;
         }
-        categories[categoryName] = { isHidden: false, links: [] };
+        categories[categoryName] = { isHidden: false, isPrivate: false, links: [] };
         updateCategorySelect();
         renderCategories();
         setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
@@ -1454,6 +1519,15 @@ const HTML_CONTENT = `
         await saveLinks();
     }
 
+    async function toggleCategoryPrivate(category, isPrivate) {
+        if (!await validateTokenOrRedirect()) return;
+        categories[category].isPrivate = isPrivate;
+        (categories[category].links || []).forEach(l => { l.isPrivate = isPrivate; });
+        renderCategories();
+        renderCategoryButtons();
+        await saveLinks();
+    }
+
     async function pinCategory(categoryName) {
         if (!await validateTokenOrRedirect()) return;
         const keys = Object.keys(categories);
@@ -1498,8 +1572,8 @@ const HTML_CONTENT = `
         const fragment = document.createDocumentFragment();
         const sourceCategories = searchMode && filteredCategories ? filteredCategories : categories;
 
-        Object.entries(sourceCategories).forEach(([category, { links, isHidden }]) => {
-            if (!isEditMode && !isLoggedIn && isHidden && !searchMode) return;
+        Object.entries(sourceCategories).forEach(([category, { links, isHidden, isPrivate }]) => {
+            if (!isEditMode && !isLoggedIn && (isHidden || isPrivate) && !searchMode) return;
 
             const section = document.createElement('div');
             section.className = 'section section-anchor';
@@ -1554,6 +1628,15 @@ const HTML_CONTENT = `
                         </label>
                     </div>
 
+                    <!-- 私密开关 -->
+                    <div class="flex items-center justify-center w-8 h-8 has-tooltip cursor-pointer" data-tooltip="\${isPrivate ? '设为公开分类' : '设为私密分类'}">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" data-action="togglePrivate" data-category="\${escAttr(category)}" \${isPrivate ? 'checked' : ''} 
+                                class="sr-only peer">
+                            <div class="w-3.5 h-3.5 rounded-full border-2 border-accent peer-focus:outline-none peer peer-checked:bg-accent peer-checked:border-accent transition-colors"></div>
+                        </label>
+                    </div>
+
                     <div class="w-px h-4 bg-line dark:bg-line-input mx-0.5"></div>
 
                     <!-- 删除 -->
@@ -1569,8 +1652,12 @@ const HTML_CONTENT = `
             // 根据布局模式调整 Grid 列数
             // APP 模式下，手机端一行4个，平板6个，大屏8-10个
             const gridClasses = isAppLayout 
-                ? 'grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-x-2 gap-y-6' 
-                : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4';
+                ? (isCompactActive()
+                    ? 'grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-x-1 gap-y-2'
+                    : 'grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-x-2 gap-y-6')
+                : (isCompactActive()
+                    ? 'grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-x-2 gap-y-1.5'
+                    : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4');
             
             cardContainer.className = \`grid \${gridClasses} card-container relative\`;
             cardContainer.id = gridId(category); // 与 section.id 区分，避免同页面 id 重复
@@ -1591,12 +1678,14 @@ const HTML_CONTENT = `
                 const addCardPlaceholder = document.createElement('div');
                 const sizeClasses = isAppLayout 
                     ? 'w-16 h-16 rounded-[1.2rem] mx-auto' 
-                    : 'min-h-[100px] p-4 rounded-[var(--radius-2xl)] w-full';
+                    : (isCompactActive()
+                        ? 'min-h-[44px] p-1.5 rounded-[var(--radius-2xl)] w-full'
+                        : 'min-h-[100px] p-4 rounded-[var(--radius-2xl)] w-full');
                 
                 addCardPlaceholder.className = \`add-card-placeholder group flex flex-col h-full w-full \${sizeClasses} rounded-[var(--radius-2xl)] border-2 border-dashed border-line dark:border-line hover:border-accent dark:hover:border-accent hover:bg-[color-mix(in_oklab,var(--accent)_50%,transparent)] dark:hover:bg-soft transition-all cursor-pointer flex items-center justify-center\`;
                 addCardPlaceholder.innerHTML = \`
-                    <div class="w-10 h-10 rounded-full bg-muted dark:bg-muted group-hover:bg-soft dark:group-hover:bg-soft flex items-center justify-center transition-colors pointer-events-none">
-                        <svg class="w-6 h-6 text-muted-foreground group-hover:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    <div class="\${isCompactActive() ? 'w-6 h-6' : 'w-10 h-10'} rounded-full bg-muted dark:bg-muted group-hover:bg-soft dark:group-hover:bg-soft flex items-center justify-center transition-colors pointer-events-none">
+                        <svg class="\${isCompactActive() ? 'w-3.5 h-3.5' : 'w-6 h-6'} text-muted-foreground group-hover:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                     </div>
                 \`;
                 
@@ -1624,6 +1713,7 @@ const HTML_CONTENT = `
     }
 
     function renderCategories() {
+        document.body.classList.toggle('compact-mode', isCompactActive());
         renderCategorySections({ renderButtons: false });
     } 
 
@@ -1645,14 +1735,15 @@ const HTML_CONTENT = `
         container.innerHTML = '';
         const visibleCategories = Object.keys(categories).filter(c => 
             (categories[c].links || []).some(l => !l.isPrivate || isLoggedIn) && 
-            (!categories[c].isHidden || isEditMode || isLoggedIn)
+            (!categories[c].isHidden || isEditMode || isLoggedIn) &&
+            (!categories[c].isPrivate || isLoggedIn)
         );
 
         if (visibleCategories.length === 0) return;
 
         visibleCategories.forEach(cat => {
             const btn = document.createElement('button');
-            btn.className = 'category-button whitespace-nowrap px-4 py-1.5 text-xs font-medium rounded-[var(--radius-xl)] border border-line dark:border-line-input transition-all active:scale-95 shadow-sm scroll-snap-align-start';
+            btn.className = 'category-button whitespace-nowrap px-4 py-1.5 text-xs font-medium rounded-[var(--radius-xl)] border border-line dark:border-line-input transition-all active:scale-95 shadow-sm';
             btn.classList.add('bg-muted', 'dark:bg-muted', 'text-muted-foreground', 'dark:text-muted-foreground', 'hover:bg-[var(--menu-hover)]', 'hover:text-accent', 'dark:hover:text-accent', 'hover:border-accent', 'dark:hover:border-accent');
             
             btn.textContent = cat;
@@ -2023,7 +2114,7 @@ const HTML_CONTENT = `
         
         let cardBaseClass = isAppLayout 
             ? 'flex flex-col items-center justify-start py-1 gap-1.5 hover:z-10' 
-            : 'flex flex-col p-4 bg-[color-mix(in_oklab,var(--card)_90%,transparent)] dark:bg-[color-mix(in_oklab,var(--card)_60%,transparent)] backdrop-blur-sm border border-line dark:border-[color-mix(in_oklab,var(--border)_50%,transparent)] hover:border-[color-mix(in_oklab,var(--primary)_50%,transparent)] dark:hover:border-[color-mix(in_oklab,var(--primary)_50%,transparent)] shadow-sm hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] dark:shadow-none dark:hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.4)] hover:-translate-y-1.5';
+            : 'flex flex-col ' + (isCompactActive() ? 'px-2 py-1.5' : 'p-4') + ' bg-[color-mix(in_oklab,var(--card)_90%,transparent)] dark:bg-[color-mix(in_oklab,var(--card)_60%,transparent)] backdrop-blur-sm border border-line dark:border-[color-mix(in_oklab,var(--border)_50%,transparent)] hover:border-[color-mix(in_oklab,var(--primary)_50%,transparent)] dark:hover:border-[color-mix(in_oklab,var(--primary)_50%,transparent)] shadow-sm hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] dark:shadow-none dark:hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.4)] hover:-translate-y-1.5';
             
         if (link.isPrivate && !isAppLayout) {
             cardBaseClass += ' ring-1 ring-amber-400/40 bg-[color-mix(in_oklab,var(--card)_85%,transparent)] dark:bg-amber-900/10 !border-amber-200 dark:!border-amber-700/50';
@@ -2043,12 +2134,12 @@ const HTML_CONTENT = `
         const header = document.createElement('div');
         header.className = isAppLayout 
             ? 'flex flex-col items-center justify-center w-full relative' 
-            : 'flex items-center gap-3 mb-2.5 w-full';
+            : 'flex items-center gap-2.5 ' + (isCompactActive() ? 'mb-0.5' : 'mb-2.5') + ' w-full';
         
         const iconWrap = document.createElement('div');
         const iconWrapClass = isAppLayout
             ? 'relative w-14 h-14 sm:w-16 sm:h-16'
-            : 'relative w-9 h-9';
+            : (isCompactActive() ? 'relative w-7 h-7' : 'relative w-9 h-9');
         iconWrap.className = iconWrapClass;
 
         const spinner = document.createElement('span');
@@ -2059,8 +2150,8 @@ const HTML_CONTENT = `
         icon.alt = '';
         icon.setAttribute('loading', 'lazy'); 
         icon.setAttribute('decoding', 'async'); 
-        icon.setAttribute('width', isAppLayout ? 64 : 36); 
-        icon.setAttribute('height', isAppLayout ? 64 : 36);
+        icon.setAttribute('width', isAppLayout ? 64 : (isCompactActive() ? 28 : 36)); 
+        icon.setAttribute('height', isAppLayout ? 64 : (isCompactActive() ? 28 : 36));
         
         // 图标样式
         let iconClass = 'relative w-full h-full opacity-0 transition duration-300';
@@ -2124,7 +2215,7 @@ const HTML_CONTENT = `
 
         card.appendChild(header);
 
-        if (!isAppLayout) {
+        if (!isAppLayout && !isCompactActive()) {
             const desc = document.createElement('div');
             desc.className = 'text-xs text-muted-foreground line-clamp-2 min-h-[1.25rem] card-tip leading-relaxed pointer-events-none w-full';
             desc.textContent = link.tips || '';
@@ -2266,11 +2357,16 @@ const HTML_CONTENT = `
             }
         });
         container.addEventListener('change', (e) => {
-            const input = e.target.closest('[data-action="toggleHidden"]');
+            const input = e.target.closest('[data-action="toggleHidden"], [data-action="togglePrivate"]');
             if (!input) return;
             const tipBox = input.closest('.has-tooltip');
-            if (tipBox) tipBox.setAttribute('data-tooltip', input.checked ? '显示分类' : '隐藏分类');
-            toggleCategoryHidden(input.dataset.category, input.checked);
+            const isPrivate = input.dataset.action === 'togglePrivate';
+            if (tipBox) tipBox.setAttribute('data-tooltip', input.checked ? (isPrivate ? '设为公开分类' : '显示分类') : (isPrivate ? '设为私密分类' : '隐藏分类'));
+            if (isPrivate) {
+                toggleCategoryPrivate(input.dataset.category, input.checked);
+            } else {
+                toggleCategoryHidden(input.dataset.category, input.checked);
+            }
         });
     }
     
@@ -2383,7 +2479,7 @@ const HTML_CONTENT = `
                      categories[cat].links.splice(idx, 1);
                      
                      if(!categories[updatedLink.category]) {
-                         categories[updatedLink.category] = { isHidden:false, links:[] };
+                         categories[updatedLink.category] = { isHidden:false, isPrivate:false, links:[] };
                      }
                      categories[updatedLink.category].links.push(updatedLink);
                  }
@@ -2393,7 +2489,7 @@ const HTML_CONTENT = `
         
         if (!found) {
              if(!categories[updatedLink.category]) {
-                 categories[updatedLink.category] = { isHidden:false, links:[] };
+                 categories[updatedLink.category] = { isHidden:false, isPrivate:false, links:[] };
              }
              oldCategory = updatedLink.category;
              categories[updatedLink.category].links.push(updatedLink);
@@ -2753,7 +2849,7 @@ const HTML_CONTENT = `
             // 用 data-category（原始名）做分类键，与 categories 对象键一致；回退到 section.id
             const catName = sec.dataset.category || sec.id;
             const oldCat = categories[catName];
-            newCategories[catName] = { isHidden: oldCat ? oldCat.isHidden : false, links: [] };
+            newCategories[catName] = { isHidden: oldCat ? oldCat.isHidden : false, isPrivate: oldCat ? oldCat.isPrivate : false, links: [] };
             
             const cards = sec.querySelectorAll('.card');
             cards.forEach(c => {
@@ -3466,6 +3562,7 @@ const HTML_CONTENT = `
         if (!isLoggedIn) {
              document.getElementById('password-input').value = '';
              toggleOverlay('password-dialog-overlay', true);
+             document.getElementById('totp-input').value = '';
              document.getElementById('password-input').focus();
         } else {
              if (await customConfirm('确定退出登录吗？')) {
@@ -3527,7 +3624,7 @@ const HTML_CONTENT = `
              const res = await fetch('/api/login', {
                  method: 'POST',
                  headers: {'Content-Type': 'application/json'},
-                 body: JSON.stringify({password: pwd})
+                 body: JSON.stringify({password: pwd, totp: document.getElementById('totp-input').value})
              });
              const data = await res.json();
              if(data.valid) {
@@ -3541,9 +3638,9 @@ const HTML_CONTENT = `
              } else if (res.status === 429 && data.locked) {
                  await customAlertRateLimit(data.retryAfter || 900);
              } else {
-                 var remMsg = '密码错误';
+                 var remMsg = (data && data.message) ? data.message : '密码错误';
                  var remaining = typeof data.remaining === 'number' ? data.remaining : 0;
-                 if (remaining > 0) remMsg = '密码错误，还可尝试 ' + remaining + ' 次';
+                 if (remaining > 0) remMsg = remMsg + '，还可尝试 ' + remaining + ' 次';
                  await customAlert(remMsg);
              }
          } catch(e) { await customAlert('Login Error'); }
@@ -3621,15 +3718,21 @@ const HTML_CONTENT = `
         });
     }
 
-    function customConfirm(msg) {
+    function customConfirm(msg, okText = '确定', cancelText = '取消') {
         return new Promise(resolve => {
             toggleOverlay('custom-confirm-overlay', true);
             document.getElementById('custom-confirm-message').innerText = msg;
+            const okBtn = document.getElementById('custom-confirm-ok');
+            const cancelBtn = document.getElementById('custom-confirm-cancel');
+            okBtn.innerText = okText;
+            cancelBtn.innerText = cancelText;
             
             const close = (val) => {
                 toggleOverlay('custom-confirm-overlay', false);
                 document.getElementById('custom-confirm-ok').onclick = null;
                 document.getElementById('custom-confirm-cancel').onclick = null;
+                okBtn.innerText = '确定';
+                cancelBtn.innerText = '取消';
                 resolve(val);
             };
             document.getElementById('custom-confirm-ok').onclick = () => close(true);
@@ -3812,7 +3915,6 @@ const HTML_CONTENT = `
     function parseBookmarks(html) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-        const categories = {};
 
         // 清洗书签标题:按分隔符(|、英文/中文冒号 : ：、两边带可选空格的 -/–/—)拆分
         function cleanTitle(title) {
@@ -3850,20 +3952,27 @@ const HTML_CONTENT = `
             };
         }
 
-        function getLinks(dl) {
+        function getLinks(dl, catLabel, skipped) {
             const links = [];
             const dts = Array.from(dl.children).filter(e => e && e.tagName === 'DT');
             for (const dt of dts) {
                 const a = dt.querySelector(':scope > a');
                 if (!a) continue;
                 const url = (a.getAttribute('href') || '').trim();
-                if (!url) continue;
-                if (/^(javascript:|vbscript:|data:|chrome:|edge:|about:|magnet:)/i.test(url)) continue;
                 const clean = cleanTitle(a.textContent);
-                links.push({ name: clean.name, url, tips: clean.tips, icon: '', category: null, isPrivate: false });
+                const why = importUrlRejectReason(url);
+                if (why) {
+                    if (skipped) skipped.push({ name: clean.name || url, url, category: catLabel, reason: why });
+                    continue;
+                }
+                links.push({ name: clean.name, url, tips: clean.tips, icon: '', category: null, isPrivate: true });
             }
             return links;
         }
+
+        // 解析结果写入局部对象，避免污染页面正在使用的全局 categories
+        const parsedCats = {};
+        const parsedSkipped = [];
 
         // 递归处理一个文件夹:子文件夹生成独立分类,当前文件夹的直接链接归入当前分类
         function processFolder(dl, catName) {
@@ -3874,10 +3983,10 @@ const HTML_CONTENT = `
                 const subName = h3 ? h3.textContent.trim() : '未分类';
                 processFolder(childDl, subName);
             }
-            const links = getLinks(dl);
+            const links = getLinks(dl, catName, parsedSkipped);
             if (catName && links.length) {
-                if (!categories[catName]) categories[catName] = { isHidden: false, links: [] };
-                links.forEach(l => { l.category = catName; categories[catName].links.push(l); });
+                if (!parsedCats[catName]) parsedCats[catName] = { isHidden: false, isPrivate: false, links: [] };
+                links.forEach(l => { l.category = catName; parsedCats[catName].links.push(l); });
             }
         }
 
@@ -3894,19 +4003,122 @@ const HTML_CONTENT = `
                 const a = dt.querySelector(':scope > a');
                 if (!a) continue;
                 const url = (a.getAttribute('href') || '').trim();
-                if (!url || /^(javascript:|vbscript:|data:|chrome:|edge:|about:|magnet:)/i.test(url)) continue;
                 const clean = cleanTitle(a.textContent);
-                if (!categories['未分类']) categories['未分类'] = { isHidden: false, links: [] };
-                categories['未分类'].links.push({ name: clean.name, url, tips: clean.tips, icon: '', category: '未分类', isPrivate: false });
+                const why = importUrlRejectReason(url);
+                if (why) {
+                    parsedSkipped.push({ name: clean.name || url, url, category: '未分类', reason: why });
+                    continue;
+                }
+                if (!parsedCats['未分类']) parsedCats['未分类'] = { isHidden: false, isPrivate: false, links: [] };
+                parsedCats['未分类'].links.push({ name: clean.name, url, tips: clean.tips, icon: '', category: '未分类', isPrivate: true });
             }
         }
 
-        return Object.keys(categories).length ? { categories } : null;
+        if (!Object.keys(parsedCats).length && !parsedSkipped.length) return null;
+        return { categories: parsedCats, skipped: parsedSkipped };
+    }
+
+    // 合并导入：以现有数据为基础，导入新分类/链接（同名分类合并、按 URL 去重）
+    // 书签协议白名单：与服务端 URL_SCHEME_OK 保持一致
+    // 用 [/] 字符类而非 \/ —— HTML_CONTENT 是模板字面量，\/ 会被转义吃掉导致分隔符错位
+    const IMPORT_URL_OK = /^https?:[/][/]/i;
+    // 常见被跳过的协议 → 面向用户的原因说明
+    const IMPORT_URL_SKIP_REASON = [
+        [/^javascript:/i,  '脚本协议，出于安全考虑禁止导入'],
+        [/^vbscript:/i,   '脚本协议，出于安全考虑禁止导入'],
+        [/^data:/i,        'data 协议，出于安全考虑禁止导入'],
+        [/^chrome:/i,      '浏览器内部页面（chrome://），在网站中无法打开'],
+        [/^edge:/i,        '浏览器内部页面（edge://），在网站中无法打开'],
+        [/^about:/i,       '浏览器内部页面（about://），在网站中无法打开'],
+        [/^magnet:/i,      'BT 种子链接，不支持'],
+        [/^file:/i,        '本地文件路径，不支持'],
+        [/^ftp:/i,         'FTP 链接已停用'],
+    ];
+
+    // 判定一个 URL 是否可导入；不可导入时返回原因文案
+    function importUrlRejectReason(url) {
+        if (!url) return '空地址';
+        if (IMPORT_URL_OK.test(url)) {
+            try { new URL(url); } catch { return '地址格式不合法'; }
+            return null;
+        }
+        for (const [re, why] of IMPORT_URL_SKIP_REASON) if (re.test(url)) return why;
+        return '仅支持 http:// 或 https:// 开头的网址';
+    }
+
+    // 导入去重用的 URL 归一化键：忽略末尾斜杠、hash、协议与域名大小写
+    // 让 https://a.com 与 https://a.com/ 被视为同一条
+    function importUrlKey(u) {
+        const raw = String(u == null ? '' : u).trim();
+        if (!raw) return '';
+        try {
+            const url = new URL(raw);
+            const path = url.pathname.replace(/[/]+$/, '');   // 同上：用 [/] 规避模板转义
+            return (url.host.toLowerCase() + path + url.search).toLowerCase();
+        } catch {
+            return raw.toLowerCase();
+        }
+    }
+
+    // 兼容 {名称:{links:[...]}} 与旧格式 {名称:[...]} 两种分类结构
+    function catLinksOf(cat) {
+        if (Array.isArray(cat)) return cat;
+        return (cat && Array.isArray(cat.links)) ? cat.links : [];
+    }
+
+    // 返回 { categories, stats }；同名分类按 URL 归一化去重后追加
+    function mergeImportData(currentCats, importedData) {
+        const merged = {};
+        const stats = { added: 0, dup: 0, newCats: 0, invalid: 0, touchedCats: 0 };
+
+        Object.keys(currentCats || {}).forEach(key => {
+            const cat = currentCats[key] || {};
+            merged[key] = {
+                isHidden: !!cat.isHidden,
+                isPrivate: !!cat.isPrivate,
+                links: catLinksOf(cat).slice()
+            };
+        });
+
+        // 分类名去空白索引：避免 "test" 与 "test " 被当成两个分类
+        const nameIndex = new Map();
+        Object.keys(merged).forEach(k => nameIndex.set(k.trim().toLowerCase(), k));
+
+        const importedCats = (importedData && importedData.categories) || {};
+        Object.keys(importedCats).forEach(rawName => {
+            const importedLinks = catLinksOf(importedCats[rawName]);
+
+            // 归一化分类名，命中已有分类则并入，否则新建
+            let catName = rawName;
+            const hit = nameIndex.get(rawName.trim().toLowerCase());
+            if (hit !== undefined) {
+                catName = hit;
+            } else {
+                nameIndex.set(catName.trim().toLowerCase(), catName);
+                merged[catName] = { isHidden: false, isPrivate: false, links: [] };
+                stats.newCats++;
+            }
+
+            const existingKeys = new Set(merged[catName].links.map(l => importUrlKey(l.url)));
+            let catTouched = false;
+            importedLinks.forEach(link => {
+                if (!link || typeof link !== 'object' || !link.url) { stats.invalid++; return; }
+                const key = importUrlKey(link.url);
+                if (!key) { stats.invalid++; return; }
+                if (existingKeys.has(key)) { stats.dup++; return; }
+                merged[catName].links.push({ ...link, category: catName, isPrivate: true });
+                existingKeys.add(key);
+                stats.added++;
+                catTouched = true;
+            });
+            if (catTouched) stats.touchedCats++;
+        });
+
+        return { categories: merged, stats };
     }
 
     async function importData() {
         if(!await validateTokenOrRedirect()) return;
-        if(!await customConfirm("确定要导入数据吗？导入将覆盖现有数据！")) return;
         
         const fileInput = document.getElementById('import-file-input');
         fileInput.value = '';
@@ -3921,34 +4133,108 @@ const HTML_CONTENT = `
                     try {
                         const content = event.target.result;
                         const trimmed = content.trimStart();
-                        let data;
+                        let data, skipped = [];
                         if (trimmed.startsWith('<!DOCTYPE') || /<(DL|H3)\b/i.test(trimmed)) {
                             // Chrome / Edge 书签 HTML
                             data = parseBookmarks(content);
                             if (!data) throw new Error("No valid bookmarks found");
+                            skipped = data.skipped || [];
                         } else {
                             // 本项目导出的 JSON 配置
                             data = JSON.parse(content);
                             if (typeof data !== 'object' || data === null) throw new Error("Invalid JSON");
+                        }
+                        // 导入的所有链接默认设为私密(仅登录可见)
+                        if (data && data.categories) {
+                            for (const catObj of Object.values(data.categories)) {
+                                for (const link of catLinksOf(catObj)) {
+                                    if (link) link.isPrivate = true;
+                                }
+                            }
+                        }
+                        // 预检：按协议白名单过滤，剔除导入数据里打不开的链接
+                        const rejected = [];
+                        if (data && data.categories) {
+                            const keptCats = {};
+                            for (const [cname, catObj] of Object.entries(data.categories)) {
+                                const kept = [];
+                                for (const link of catLinksOf(catObj)) {
+                                    const why = link ? importUrlRejectReason(link.url) : '数据格式错误';
+                                    if (why) rejected.push({ name: (link && link.name) || '(无名称)', url: (link && link.url) || '', category: cname, reason: why });
+                                    else kept.push(link);
+                                }
+                                if (kept.length || !rejected.some(r => r.category === cname)) {
+                                    keptCats[cname] = (catObj && !Array.isArray(catObj))
+                                        ? { ...catObj, links: kept }
+                                        : kept;
+                                }
+                            }
+                            data = { ...data, categories: keptCats };
+                        }
+                        const allSkipped = skipped.concat(rejected);
+
+                        // 导入前先告知会被跳过的条目，避免"看起来成功了其实没导进去"
+                        if (allSkipped.length) {
+                            const preview = allSkipped.slice(0, 8).map(s =>
+                                '· ' + s.name + '\\n   ' + String(s.url || '(空)').slice(0, 90) + '\\n   原因：' + s.reason).join('\\n');
+                            const more = allSkipped.length > 8 ? '\\n……另有 ' + (allSkipped.length - 8) + ' 条同类' : '';
+                            const go = await customConfirm(
+                                '检测到 ' + allSkipped.length + ' 条书签无法导入：\\n\\n' + preview + more + '\\n\\n这些书签会被跳过，其余内容继续导入。是否继续？',
+                                '继续导入', '取消导入'
+                            );
+                            if (!go) { await customAlert('已取消导入'); return; }
+                        }
+
+                        // 选择导入方式：合并 or 覆盖
+                        const mergeMode = await customConfirm(
+                            '请选择导入方式：\\n\\n【合并】保留现有分类与链接，导入内容追加进去（同名分类按 URL 去重合并）\\n\\n【覆盖】清空现有全部数据，仅保留本次导入内容',
+                            '合并导入', '覆盖导入'
+                        );
+                        let payload = data, stats = null;
+                        if (mergeMode) {
+                            const r = mergeImportData(categories, data);
+                            payload = { categories: r.categories };
+                            stats = r.stats;
+                        } else {
+                            let n = 0;
+                            for (const c of Object.values(data.categories || {})) n += catLinksOf(c).length;
+                            stats = { added: n, dup: 0, newCats: Object.keys(data.categories || {}).length, invalid: 0, touchedCats: Object.keys(data.categories || {}).length };
                         }
                         const res = await fetchWithAuth("/api/importData", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
                             },
-                            body: JSON.stringify(data)
+                            body: JSON.stringify(payload)
                         });
                         if (res.status === 401) {
                             logout();
                             await customAlert('登录凭证已过期，请重新登录');
                             return;
                         }
-                        if (!res.ok) throw new Error("Import failed");
-                        await customAlert('数据导入成功！');
-                        location.reload(); 
+                        if (!res.ok) {
+                            // 透出服务端真实原因，不再一律报"文件格式错误"
+                            let detail = '';
+                            try { const j = await res.json(); detail = (j && (j.detail || j.error)) || ''; } catch (_) {}
+                            throw new Error('HTTP ' + res.status + (detail ? ' ' + detail : ''));
+                        }
+                        const parts = [mergeMode ? '合并导入' : '覆盖导入', '成功', '新增 ' + stats.added + ' 条'];
+                        if (stats.dup) parts.push('跳过重复 ' + stats.dup + ' 条');
+                        if (stats.newCats) parts.push('新建分类 ' + stats.newCats + ' 个');
+                        if (allSkipped.length) parts.push('无法导入 ' + allSkipped.length + ' 条');
+                        await customAlert(parts.join('，') + '！');
+                        // 原地重新拉取，而不是 location.reload()：
+                        // reload 会触发「关闭页面前确认」，用户一旦选择留在本页，
+                        // 界面就停留在导入前的旧数据上，看起来像导入失败（其实已存成功）
+                        await loadLinks(true);
                     } catch (error) {
-                        console.error("解析文件失败:", error);
-                        await customAlert('文件格式错误，请检查文件内容！');
+                        console.error("导入失败:", error);
+                        const msg = String((error && error.message) || '');
+                        if (/^HTTP \d/.test(msg)) {
+                            await customAlert('导入被服务端拒绝：' + msg + '\\n\\n常见原因：链接数超限、分类数超限、名称或地址超长、存在非法链接。');
+                        } else {
+                            await customAlert('文件解析失败：' + msg + '\\n\\n请确认是本应用导出的 JSON 或浏览器书签 HTML。');
+                        }
                     }
                 };
                 reader.readAsText(file);
@@ -4271,7 +4557,7 @@ async function buildHtml(theme) {
 function normalizeCategories(categories) {
     for (const key in categories) {
         if (Array.isArray(categories[key])) {
-            categories[key] = { isHidden: false, links: categories[key] };
+            categories[key] = { isHidden: false, isPrivate: false, links: categories[key] };
         }
     }
     return categories;
@@ -4293,7 +4579,7 @@ function filterPublic(categories) {
     const out = {};
     for (const name in categories) {
         const cat = categories[name];
-        if (cat && cat.isHidden) continue;
+        if (cat && (cat.isHidden || cat.isPrivate)) continue;
         const publicLinks = (cat && Array.isArray(cat.links) ? cat.links : []).filter(l => !l.isPrivate);
         if (publicLinks.length > 0) out[name] = { ...(cat || {}), links: publicLinks };
     }
@@ -4609,6 +4895,47 @@ async function handleSmartBackup(env, currentData) {
     }
 }
 
+async function base32ToBytes(secret) {
+    const TABLE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+    const clean = secret.toUpperCase().replace(/[\s=]/g, '');
+    const bytes = [];
+    let buf = 0, bits = 0;
+    for (const ch of clean) {
+        const idx = TABLE.indexOf(ch);
+        if (idx === -1) return null;
+        buf = (buf << 5) | idx;
+        bits += 5;
+        if (bits >= 8) { bytes.push((buf >>> (bits - 8)) & 0xff); bits -= 8; }
+    }
+    return new Uint8Array(bytes);
+}
+
+async function totpCode(secret, counter) {
+    const key = await base32ToBytes(secret);
+    if (!key) return null;
+    const buf = new Uint8Array(8);
+    let v = Math.floor(counter);
+    for (let i = 7; i >= 0; i--) { buf[i] = v & 0xff; v = Math.floor(v / 256); }
+    const cryptoKey = await crypto.subtle.importKey('raw', key, { name: 'HMAC', hash: 'SHA-1' }, false, ['sign']);
+    const sig = new Uint8Array(await crypto.subtle.sign('HMAC', cryptoKey, buf));
+    const offset = sig[sig.length - 1] & 0x0f;
+    const code = ((sig[offset] & 0x7f) << 24) | (sig[offset + 1] << 16) | (sig[offset + 2] << 8) | sig[offset + 3];
+    return (code % 1000000).toString().padStart(6, '0');
+}
+
+async function verifyTotp(secret, code) {
+    if (!secret || !code) return false;
+    const c = String(code).trim();
+    if (!/^\d{6}$/.test(c)) return false;
+    const now = Math.floor(Date.now() / 1000);
+    for (let dt = -1; dt <= 1; dt++) {
+        const expected = await totpCode(secret, Math.floor(now / 30) + dt);
+        if (expected && expected === c) return true;
+    }
+    return false;
+}
+
+
 function assertEnv(env) {
     const messages = [];
     if (!env.JWT_SECRET || env.JWT_SECRET.length < 32) {
@@ -4656,6 +4983,8 @@ function validateCategories(raw) {
         const cat = raw[name];
         const links = Array.isArray(cat) ? cat : (cat && Array.isArray(cat.links) ? cat.links : null);
         if (!links) return { ok: false, reason: 'BAD_CATEGORY_SHAPE' };
+        if (cat && cat.isPrivate != null && typeof cat.isPrivate !== 'boolean') return { ok: false, reason: 'BAD_FLAG' };
+        if (cat && cat.isHidden != null && typeof cat.isHidden !== 'boolean') return { ok: false, reason: 'BAD_FLAG' };
 
         total += links.length;
         for (const l of links) {
@@ -4681,9 +5010,10 @@ function validateCategories(raw) {
 function sanitizeCategories(raw) {
     const out = {};
     for (const name of Object.keys(raw)) {
-        const cat = Array.isArray(raw[name]) ? { isHidden: false, links: raw[name] } : raw[name];
+        const cat = Array.isArray(raw[name]) ? { isHidden: false, isPrivate: false, links: raw[name] } : raw[name];
         out[name] = {
             isHidden: !!cat.isHidden,
+            isPrivate: !!cat.isPrivate,
             links: (cat.links || []).map(l => ({
                 name: String(l.name).slice(0, MAX_NAME),
                 url: String(l.url).slice(0, MAX_URL),
@@ -4806,18 +5136,33 @@ export default {
                     return new Response(JSON.stringify({ valid: false, locked: true, remaining: 0, retryAfter: waitSec }), { status: 429, headers: { ...corsHeaders(request, env), 'Content-Type': 'application/json' } });
                 }
 
-                const { password } = await request.json();
-                const passwordOk = typeof password === 'string' && (await timingSafeStringEqual(password, env.ADMIN_PASSWORD));
-                if (!passwordOk) {
+                // 密码与 TOTP 共用同一限流计数器，避免"已知密码"绕过二次验证去爆破验证码
+                const registerFailure = async () => {
                     const newAttempts = attempts + 1;
                     const newExpiredAt = Date.now() + LOCK_MS;
                     await env.CARD_ORDER.put(rateLimitKey, String(newAttempts), { expirationTtl: 900, metadata: { expiredAt: newExpiredAt } });
-                    const remaining = Math.max(0, MAX_ATTEMPTS - newAttempts);
-                    if (newAttempts >= MAX_ATTEMPTS) {
-                        return new Response(JSON.stringify({ valid: false, locked: true, remaining: 0, retryAfter: Math.max(1, Math.ceil((newExpiredAt - Date.now()) / 1000)) }), { status: 429, headers: { ...corsHeaders(request, env), 'Content-Type': 'application/json' } });
+                    return { newAttempts, remaining: Math.max(0, MAX_ATTEMPTS - newAttempts), retryAfter: Math.max(1, Math.ceil((newExpiredAt - Date.now()) / 1000)) };
+                };
+                const failResponse = (info, extra = {}) => {
+                    if (info.newAttempts >= MAX_ATTEMPTS) {
+                        return new Response(JSON.stringify({ valid: false, locked: true, remaining: 0, retryAfter: info.retryAfter, ...extra }), { status: 429, headers: { ...corsHeaders(request, env), 'Content-Type': 'application/json' } });
                     }
-                    return new Response(JSON.stringify({ valid: false, remaining }), { status: 403, headers: { ...corsHeaders(request, env), 'Content-Type': 'application/json' } });
+                    return new Response(JSON.stringify({ valid: false, remaining: info.remaining, ...extra }), { status: 403, headers: { ...corsHeaders(request, env), 'Content-Type': 'application/json' } });
+                };
+
+                const { password, totp } = await request.json();
+                const passwordOk = typeof password === 'string' && (await timingSafeStringEqual(password, env.ADMIN_PASSWORD));
+                if (!passwordOk) {
+                    return failResponse(await registerFailure());
                 }
+
+                if (env.TOTP_SECRET) {
+                    const totpOk = await verifyTotp(env.TOTP_SECRET, totp);
+                    if (!totpOk) {
+                        return failResponse(await registerFailure(), { error: 'INVALID_TOTP', message: '两步验证码错误' });
+                    }
+                }
+
                 await env.CARD_ORDER.delete(rateLimitKey);
 
                 const currentTime = Math.floor(Date.now() / 1000);
